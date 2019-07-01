@@ -57,11 +57,6 @@ spec:
         volumeMounts:
           - name: dockersocket
             mountPath: /var/run/docker.sock
-          - name: logpodpath
-            mountPath: /var/log/pods
-          # Docker runtime directory, replace this path with your container runtime logs directory, or remove this configuration if `/var/log/pods` is not a symlink to any other directory.
-          - name: logcontainerpath
-            mountPath: /var/lib/docker/containers
           - name: procdir
             mountPath: /host/proc
             readOnly: true
