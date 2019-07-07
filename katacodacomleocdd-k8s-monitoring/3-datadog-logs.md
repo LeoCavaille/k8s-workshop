@@ -1,16 +1,41 @@
-1. Now let's start to configure the agent in a more specific way, we first want
-   to be collecting all sorts of logs coming from our Kubernetes deployment. The
-[official
-documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/?tab=k8sfile#enable-capabilities) has some guidelines to bootstrap that
-1. In this step you will need to:
+1. [Kube State Metrics](https://github.com/kubernetes/kube-state-metrics/blob/master/README.md), also known as KSM is a simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
+It also an additional source of data for the official Datadog check to monitor [Kubernetes](https://docs.datadoghq.com/integrations/kubernetes/#setup-kubernetes-state). 
+The agent will use a process called Autodiscovery to identify that KSM is running, so it can start crawling data from the `/metrics` endpoint.
 
-  * add the `DD_LOGS_ENABLED` and `DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL`
-    environment variables to the daemonset spec and set them to `"true"`
-  * mount the two directories inside the agent pod `/var/log/pods` and
-    `/var/lib/docker/containers` as we are using Docker as the container runtime
-in this environment
+1. Let's deploy KSM: 
+`for f in assets/02_installing_kube_state_metrics/kube-state-metrics-*; do kubectl apply -f $f; done`{{execute}}
 
-1. Once you have edited the spec, re-apply the daemonset to rollout the agent.
+1. You will notice that this has created a dedicated service account as well as a cluster role, a service and a cluster role binding. 
+Because KSM needs to get the metrics about many objects in the cluster, the application needs to communicate with the APIServer with an extended set of permissions.
 
-+ add rolling update because nothing changed, default daemonset type is OnDelete
+1. Once KSM you see the pod running: 
+`kubectl get pods -l k8s-app=kube-state-metrics -owide`{{execute}}
+Execute in the pod running the Datadog agent and verify that the KSM check is running.
+
+1. Start by getting the pod name:
+`kubectl get pods -l app=datadog-agent`{{execute}} 
+Then exec into the pod:
+`kubectl exec -ti {{pod_name}} bash`{{execute}}
+Then run `agent status`{{execute}}.
+
+Look for:
+```
+=========
+Collector
+=========
+
+  Running Checks
+  ==============
+    kubernetes_state (1.0.0)
+    ------------------------------
+      Instance ID: kubernetes_state:822c2bebb015713 [OK]
+      Total Runs: 10
+      Metric Samples: Last Run: 1,251, Total: 12,510
+      Events: Last Run: 0, Total: 0
+      Service Checks: Last Run: 1, Total: 10
+      Average Execution Time : 1.102s  
+```
+
+1. You can now go back to the Out of the box Kubernetes dashboard in your Datadog account and you should start seeing metrics flowing on all the widget. You can now start monitoring the health of the overall cluster!
+
 

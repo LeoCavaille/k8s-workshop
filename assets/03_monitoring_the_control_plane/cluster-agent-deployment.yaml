@@ -56,4 +56,4 @@ spec:
         - configMap:
             defaultMode: 420
             name: control-plane-yaml
-          name: control-plane-yaml               
+          name: control-plane-yaml  

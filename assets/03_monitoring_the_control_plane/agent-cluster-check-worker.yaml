@@ -17,16 +17,6 @@ spec:
       - image: datadog/agent:latest
         imagePullPolicy: Always
         name: datadog-agent-cluster-check
-        ports:
-          - containerPort: 8125
-            # Custom metrics via DogStatsD - uncomment this section to enable custom metrics collection
-            # hostPort: 8125
-            name: dogstatsdport
-            protocol: UDP
-          - containerPort: 8126
-            hostPort: 8126
-            name: traceport
-            protocol: TCP
         env:
           - name: DD_API_KEY
             valueFrom:
@@ -55,8 +45,6 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: status.hostIP
-          - name: DD_APM_ENABLED
-            value: "true"
         resources:
           requests:
             memory: "256Mi"
