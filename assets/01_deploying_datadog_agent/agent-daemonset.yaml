@@ -32,6 +32,10 @@ spec:
               secretKeyRef:
                 name: datadog-api-key
                 key: token
+          - name: DD_LOGS_ENABLED
+            value: "true"
+          - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+            value: "true"
           - name: DD_SITE
             # Set DD_SITE to datadoghq.eu to send your Agent data to the Datadog EU site
             value: "datadoghq.com"
