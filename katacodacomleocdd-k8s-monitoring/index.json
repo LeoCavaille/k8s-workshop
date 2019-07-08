@@ -4,8 +4,12 @@
   "details": {
     "steps": [
       {
-        "title": "Step 1",
-        "text": "step1.md"
+        "title": "Create your Datadog account",
+        "text": "0-datadog-account.md"
+      },
+      {
+        "title": "Install the Datadog agent",
+        "text": "1-datadog-agent.md"
       },
       {
         "title": "Step 2",

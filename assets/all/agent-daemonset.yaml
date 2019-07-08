@@ -11,6 +11,9 @@ spec:
       name: datadog-agent
     spec:
       serviceAccountName: datadog-agent
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
       containers:
       - image: datadog/agent:latest
         imagePullPolicy: Always
@@ -41,6 +44,8 @@ spec:
             value: "true"
           - name: KUBERNETES
             value: "true"
+          # /!\ Not necessary normally, but required for katacoda
+          - name: DD_KUBELET_TLS_VERIFY  value: "false"
           - name: DD_KUBERNETES_KUBELET_HOST
             valueFrom:
               fieldRef:
