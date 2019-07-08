@@ -38,4 +38,5 @@ Collector
 
 1. You can now go back to the Out of the box Kubernetes dashboard in your Datadog account and you should start seeing metrics flowing on all the widget. You can now start monitoring the health of the overall cluster!
 
-
+1. KSM gives is good insight into the cluster, however, we are still lacking a few key elements. Namely, the actual state of the Control Plane.
+In the next exercise, we are going to deploy a Cluster Check runner that will allow us to monitor each component of the Control Plane.

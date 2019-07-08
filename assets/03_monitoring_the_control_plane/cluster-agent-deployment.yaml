@@ -45,13 +45,16 @@ spec:
         volumeMounts:
           - mountPath: /conf.d/kube_apiserver_metrics.yaml
             name: control-plane-yaml
-            subPath: kubernetes_apiserver
+            subPath: kube_apiserver_metrics.yaml
           - mountPath: /conf.d/kube_controller_manager.yaml
             name: control-plane-yaml
-            subPath: kubernetes_controller_manager
+            subPath: kube_controller_manager.yaml
           - mountPath: /conf.d/kube_scheduler.yaml
             name: control-plane-yaml
-            subPath: kubernetes_scheduler     
+            subPath: kube_scheduler.yaml
+          - mountPath: /conf.d/etcd.yaml
+            name: control-plane-yaml
+            subPath: etcd.yaml               
       volumes:
         - configMap:
             defaultMode: 420
