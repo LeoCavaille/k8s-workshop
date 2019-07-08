@@ -12,8 +12,12 @@
         "text": "1-datadog-agent.md"
       },
       {
-        "title": "Step 2",
-        "text": "step2.md"
+        "title": "Install the kube-state-metrics integration",
+        "text": "2-datadog-ksm.md"
+      },
+      {
+        "title": "Install Datadog logs Kubernetes integration",
+        "text": "3-datadog-logs.md"
       },
       {
         "title": "Step 3",

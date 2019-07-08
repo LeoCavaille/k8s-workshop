@@ -28,3 +28,7 @@ tolerations:
 `kubectl apply -f assets/datadog-agent`{{copy}}
 1. Watch a new agent pod being scheduled on the master node:
 `kubectl get pods -w -owide`{{copy}}
+
+Now take a look at your Kubernetes dashboard, you should see it getting updates
+on the state of your cluster. Some metrics are missing, go to the next step to
+fix that!
