@@ -1,7 +1,7 @@
-apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: datadog-agent
+  name: datadog-cluster-agent
 rules:
 - apiGroups:
   - ""
@@ -16,12 +16,13 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["quota.openshift.io"]
+- apiGroups:
+  - "autoscaling"
   resources:
-  - clusterresourcequotas
+  - horizontalpodautoscalers
   verbs:
-  - get
   - list
+  - watch
 - apiGroups:
   - ""
   resources:
@@ -38,17 +39,29 @@ rules:
   - configmaps
   verbs:
   - create
+  - get
+  - update
 - nonResourceURLs:
   - "/version"
   - "/healthz"
-  - "/metrics"
   verbs:
   - get
-- apiGroups:  # Kubelet connectivity
-  - ""
-  resources:
-  - nodes/metrics
-  - nodes/spec
-  - nodes/proxy
-  verbs:
-  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: datadog-cluster-agent
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: datadog-cluster-agent
+subjects:
+- kind: ServiceAccount
+  name: datadog-cluster-agent
+  namespace: default
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: datadog-cluster-agent
+  namespace: default

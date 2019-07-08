@@ -18,12 +18,12 @@ spec:
         ports:
           - containerPort: 8125
             # Custom metrics via DogStatsD - uncomment this section to enable custom metrics collection
-            # hostPort: 8125
+            hostPort: 8125
             name: dogstatsdport
             protocol: UDP
           - containerPort: 8126
             # Trace Collection (APM) - uncomment this section to enable APM
-            # hostPort: 8126
+            hostPort: 8126
             name: traceport
             protocol: TCP
         env:
@@ -35,14 +35,11 @@ spec:
           - name: DD_SITE
             # Set DD_SITE to datadoghq.eu to send your Agent data to the Datadog EU site
             value: "datadoghq.com"
-          - name: DD_COLLECT_KUBERNETES_EVENTS
-            value: "true"
-          - name: DD_LEADER_ELECTION
-            value: "true"
           - name: KUBERNETES
             value: "true"
           # /!\ Not necessary normally, but required for katacoda
-          - name: DD_KUBELET_TLS_VERIFY  value: "false"
+          - name: DD_KUBELET_TLS_VERIFY
+            value: "false"
           - name: DD_KUBERNETES_KUBELET_HOST
             valueFrom:
               fieldRef:

@@ -16,12 +16,24 @@
         "text": "2-datadog-ksm.md"
       },
       {
-        "title": "Install Datadog logs Kubernetes integration",
+        "title": "Datadog logs",
         "text": "3-datadog-logs.md"
       },
       {
-        "title": "Step 3",
-        "text": "step3.md"
+        "title": "Install Cluster agent / control plane",
+        "text": "4-control-plane.md"
+      },
+      {
+        "title": "Audit log pipelines in Datadog",
+        "text": "5-logs-pipeline.md"
+      },
+      {
+        "title": "Sample apps deploy",
+        "text": "6-sample-apps.md"
+      },
+      {
+        "title": "Usecase 1: CLB monitoring",
+        "text": "7-clb-monitoring.md"
       }
     ],
     "intro": {
