@@ -29,4 +29,11 @@ data:
     init_config:
     instances:
     - prometheus_url: http://localhost:10251/metrics
-      leader_election: true
+      leader_election: true       
+
+  etcd.yaml: |
+    cluster_check: true
+    init_config:
+    instances:
+    - url: http://localhost:2379/metrics
+      init_config:
