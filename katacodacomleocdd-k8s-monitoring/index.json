@@ -48,6 +48,7 @@
     "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "datadog-kubernetes-cluster-running"
+    "imageid": "datadog-kubernetes-cluster-running",
+    "livetime": "4h"
   }
 }
