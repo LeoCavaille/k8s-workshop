@@ -38,10 +38,10 @@ spec:
           - name: DD_EXTRA_LISTENERS
             value: "kube_services kube_endpoints"            
           - name: DD_CLUSTER_AGENT_AUTH_TOKEN
-           valueFrom:
-             secretKeyRef:
-               name: datadog-auth-token
-               key: token
+            valueFrom:
+              secretKeyRef:
+                name: datadog-auth-token
+                key: token
         volumeMounts:
           - mountPath: /conf.d/kube_apiserver_metrics.yaml
             name: control-plane-yaml
