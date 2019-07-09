@@ -1,4 +1,4 @@
-module github.com/DataDog/workshop/apps/lister-watcher
+module github.com/DataDog/workshop/apps/sample-pod-lister
 
 require (
 	github.com/philhofer/fwd v1.0.0 // indirect
