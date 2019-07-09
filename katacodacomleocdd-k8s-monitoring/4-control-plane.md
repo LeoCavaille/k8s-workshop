@@ -23,7 +23,10 @@ You can find in the `assets/03-control-plane/control-plane-configmap.yaml` the c
 
 In larger cluster this feature can be leveraged to schedule dynamically checks that only need to be run against a set of endpoints living in or outside the cluster.
 
-Run:
+Start by creating a token secret for the Datadog agent to communicate securely with the Datadog Cluster Agent.
+`kubectl create secret generic datadog-auth-token --from-literal=token=<THIRTY_2_CHARACTERS_LONG_TOKEN>`{{copy}}
+
+Then deploy the workloads by running:
 `for f in assets/03-control-plane/; do kubectl apply -f $f; done`{{execute}} 
 
 This will deploy the Cluster agent with the correct RBAC as well as a Datadog Agent with the Cluster Check feature enabled.
