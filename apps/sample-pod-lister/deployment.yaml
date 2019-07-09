@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-pod-lister
+  labels:
+    app: sample-pod-lister
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-pod-lister
+  template:
+    metadata:
+      labels:
+        app: sample-pod-lister
+    spec:
+      containers:
+      - name: pod-lister
+        image: leocavaille/sample-pod-lister:v1
+        # env:

@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-app-clb
+  name: sample-crashloopbackoff
   labels:
-    app: sample-app-clb
+    app: sample-crashloopbackoff
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sample-app-clb
+      app: sample-crashloopbackoff
   template:
     metadata:
       labels:
-        app: sample-app-clb
+        app: sample-crashloopbackoff
     spec:
       containers:
       - name: alpine
