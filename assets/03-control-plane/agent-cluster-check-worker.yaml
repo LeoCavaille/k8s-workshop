@@ -9,9 +9,9 @@ spec:
         app: datadog-agent-cluster-check
       name: datadog-agent-cluster-check
     spec:
-       tolerations:
-       - key: node-role.kubernetes.io/master # Only schedule on the master node
-         effect: NoSchedule
+      tolerations:
+      - key: node-role.kubernetes.io/master # Only schedule on the master node
+        effect: NoSchedule
       serviceAccountName: datadog-agent-cluster-check
       containers:
       - image: datadog/agent:latest
