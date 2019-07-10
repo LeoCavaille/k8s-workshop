@@ -16,11 +16,11 @@
         "text": "2-datadog-ksm.md"
       },
       {
-        "title": "Datadog logs",
+        "title": "Enable logs collection to Datadog",
         "text": "3-datadog-logs.md"
       },
       {
-        "title": "Install Cluster agent / control plane",
+        "title": "Install Cluster Agent & Control Plane monitoring",
         "text": "4-control-plane.md"
       },
       {
