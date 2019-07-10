@@ -4,7 +4,7 @@
   "details": {
     "steps": [
       {
-        "title": "Create your Datadog account",
+        "title": "Log in your Datadog account",
         "text": "0-datadog-account.md"
       },
       {
