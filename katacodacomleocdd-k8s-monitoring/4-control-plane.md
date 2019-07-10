@@ -45,7 +45,7 @@ cluster.
 
 * You can have a look in the editor at the different manifests we included in
 there:
-  * `agent-cluster-check-worker.yaml` deploys one worker on the master, see its specific `.spec.template.spec.tolerations` value to allow it
+  * `agent-cluster-check-worker.yaml` deploys one worker on the master, see its specific `tolerations` and `nodeAffinity` to do this
   * `control-plane-configmap.yaml`: check configuration that will be used to
     monitor the control plane with a Cluster Level check
   * `cluster-agent-*.yaml`: the various components of the Datadog Cluster Agent
@@ -56,14 +56,14 @@ there:
 `kubectl get pods --field-selector spec.nodeName=master`{{execute}}
 * Exec in the agent (which should be the only pod in the default namespace on the master node)
 
-`kubectl exec -ti {{pod_name}} agent configcheck`{{execute}}
+`kubectl exec -ti datadog-agent-cluster-check-{{pod_suffix}} agent configcheck`{{execute}}
 
 This will show you the checks configured and how they were configured (i.e. by
 the Cluster Agent or as a file).
 
 * Then, you can use the `agent status` commnand, which will show you that metrics are collected:
 
-`kubectl exec -ti {{pod_name}} agent status`{{execute}}
+`kubectl exec -ti datadog-agent-cluster-check-{{pod_suffix}} agent status`{{execute}}
 
 Check out the official out of the box Control Plane dashboard in your Datadog
 account [link to come].
