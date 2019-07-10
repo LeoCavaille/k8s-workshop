@@ -13,7 +13,7 @@ them:
 `kubectl apply -f assets/02-ksm-deployment`{{copy}}
 * You can watch the result, pods are deployed in `kube-system` by default:
 
-`kubectl get pods -w -owide -l k8s-app=kube-state-metrics -n kube-system`{{copy}}
+`kubectl get pods -w -owide -l k8s-app=kube-state-metrics -n kube-system`{{execute}}
 
 You will notice that this has created a dedicated service account as well as a cluster role, a service and a cluster role binding. 
 Because KSM needs to get the metrics about many objects in the cluster, the application needs to communicate with the APIServer with an extended set of permissions.
@@ -25,7 +25,7 @@ You can verify that the agent is collecting KSM metrics by executing in the pod 
 `kubectl get pods -l app=datadog-agent`{{execute}} 
 * Exec into the pod:
 
-`kubectl exec -it {{pod_name}} agent status`{{execute}}
+`kubectl exec -it {{pod_name}} agent status`{{copy}}
 
 Look for:
 ```

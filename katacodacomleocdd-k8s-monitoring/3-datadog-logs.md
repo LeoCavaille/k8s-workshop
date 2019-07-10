@@ -21,7 +21,28 @@ _Note: you don't need to save your changes, files are auto-saved._
 * Then reapply the manifest:
 
 `kubectl apply -f assets/04-enable-logs/agent-daemonset.yaml`{{copy}}
-* You can watch the rollout of the daemonset to see the change being deployed:
+
+* Look at the agent pods:
+
+`kubectl get pods -lapp=datadog-agent`{{execute}}
+
+**Even with the new manifest uploaded you can see that nothing is changing, this
+is because the current rollout strategy for the `DaemonSet` is `OnDelete` [which
+means according to the documentation](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) we
+would need to delete the current pods to get the changes. To ease future changes
+let's use the `RollingUpdate` strategy:**
+
+* Add to the same file you modified earlier under the `.spec` path:
+
+```
+spec:
+  updateStrategy:
+    type: RollingUpdate
+```
+
+* Re-apply the modified manifest, and watch the changes now happen
+
+* You can also watch the rolling update of the daemonset to see the change being deployed:
 
 `kubectl rollout status ds/datadog-agent`{{copy}}
 
