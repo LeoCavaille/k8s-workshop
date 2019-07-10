@@ -6,21 +6,21 @@ convenience we added the instructions you needed to follow here in Katacoda, see
 below.
 
 * Add the environment variables to the agent daemonset, in the editor you can go
-  to `assets/04-enable-logs/agent-daemonset.yaml` and add the following
+  to `assets/03-enable-logs/agent-daemonset.yaml` and add the following
 environment variables to the agent container:
 
 ```
     - name: DD_LOGS_ENABLED
-        value: "true"
+      value: "true"
     - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
-        value: "true"
+      value: "true"
 ```
 
 _Note: you don't need to save your changes, files are auto-saved._
 
 * Then reapply the manifest:
 
-`kubectl apply -f assets/04-enable-logs/agent-daemonset.yaml`{{copy}}
+`kubectl apply -f assets/03-enable-logs/agent-daemonset.yaml`{{copy}}
 
 * Look at the agent pods:
 

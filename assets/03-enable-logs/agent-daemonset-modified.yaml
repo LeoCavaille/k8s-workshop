@@ -48,6 +48,10 @@ spec:
                 fieldPath: status.hostIP
           - name: DD_APM_ENABLED
             value: "true"
+          - name: DD_LOGS_ENABLED
+            value: "true"
+          - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+            value: "true"
         resources:
           requests:
             memory: "256Mi"

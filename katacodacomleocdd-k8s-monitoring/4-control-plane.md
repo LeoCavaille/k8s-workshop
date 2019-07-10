@@ -19,7 +19,7 @@ This agent is going to run as a Cluster Level Check Worker.
 The [Cluster Level Checks](https://docs.datadoghq.com/agent/autodiscovery/clusterchecks/) feature allows users to monitor endpoints that are external to the cluster (e.g. Load Balancer, Database ...), it requires the [Datadog Cluster](https://docs.datadoghq.com/agent/kubernetes/cluster/) Agent to run.
 
 In this context, the Datadog Agent will be running on the master node and will be able to communicate with all the pods on this node (e.g. the Control Plane). The Cluster Agent will be running on the worker node and will interact with the APIServer to get the details of the Control Plane endpoints. 
-You can find in the `assets/03-control-plane/control-plane-configmap.yaml` the check configuration that will be used by the Cluster Agent to schedule checks on the Datadog Agent running on the master node that has the Cluster Checks feature enabled.
+You can find in the `assets/04-control-plane/control-plane-configmap.yaml` the check configuration that will be used by the Cluster Agent to schedule checks on the Datadog Agent running on the master node that has the Cluster Checks feature enabled.
 
 In larger cluster this feature can be leveraged to schedule dynamically checks that only need to be run against a set of endpoints living in or outside the cluster.
 
@@ -27,15 +27,18 @@ Start by creating a token secret for the Datadog agent to communicate securely w
 `kubectl create secret generic datadog-auth-token --from-literal=token=<THIRTY_2_CHARACTERS_LONG_TOKEN>`{{copy}}
 
 Then deploy the workloads by running:
-`for f in assets/03-control-plane/; do kubectl apply -f $f; done`{{execute}} 
+`for f in assets/04-control-plane/; do kubectl apply -f $f; done`{{execute}} 
 
 This will deploy the Cluster agent with the correct RBAC as well as a Datadog Agent with the Cluster Check feature enabled.
 You will notice that this agent has a specific toleration in its pod spec (in `spec.template.spec`):
-  <pre><code>tolerations:
+
+```
+tolerations:
   - key: node-role.kubernetes.io/master
-     effect: NoSchedule
-  </code></pre>
-  *tolerations: should be at the same indent level as containers: below it*
+    effect: NoSchedule
+```
+
+*`tolerations:` should be at the same indent level as containers: below it*
 
 This will allow it to run on the master node.
 
