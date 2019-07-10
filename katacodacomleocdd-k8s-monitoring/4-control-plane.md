@@ -1,9 +1,10 @@
 At this point, there is only a single agent being run. Yet, we had said there were actually two nodes in this environment (the Kubernetes master where you have your terminal and node01, another Kubernetes node).
 
-If you list the pods in the `kube-system`  namespace, you will see the components consituting the Control Plane:
+* If you list the pods in the `kube-system`  namespace, you will see the components consituting the Control Plane:
+
+`kubectl get pods -n kube-system -o custom-columns=NAME:.metadata.name,NODE:spec.nodeName`{{execute}}
 
 ```
-master $ kubectl get pods -n kube-system -o  custom-columns=NAME:.metadata.name,NODE:spec.nodeName
 NAME                             NODE
 [...]
 etcd-master                      master
@@ -13,45 +14,59 @@ kube-scheduler-master            master
 [...]
 ```
 
-But no Datadog Agent. So we are going to deploy one on the master node. 
-This agent is going to run as a Cluster Level Check Worker.
+* If you look at the agent pods however you can see that we have not deployed an
+  agent to the `master` node:
 
-The [Cluster Level Checks](https://docs.datadoghq.com/agent/autodiscovery/clusterchecks/) feature allows users to monitor endpoints that are external to the cluster (e.g. Load Balancer, Database ...), it requires the [Datadog Cluster](https://docs.datadoghq.com/agent/kubernetes/cluster/) Agent to run.
+`kubectl get pods -lapp=datadog-agent -owide`{{execute}} 
 
-In this context, the Datadog Agent will be running on the master node and will be able to communicate with all the pods on this node (e.g. the Control Plane). The Cluster Agent will be running on the worker node and will interact with the APIServer to get the details of the Control Plane endpoints. 
-You can find in the `assets/04-control-plane/control-plane-configmap.yaml` the check configuration that will be used by the Cluster Agent to schedule checks on the Datadog Agent running on the master node that has the Cluster Checks feature enabled.
+* We are going to deploy an agent on the master and use it as a Cluster Level Check Worker.
 
-In larger cluster this feature can be leveraged to schedule dynamically checks that only need to be run against a set of endpoints living in or outside the cluster.
+The [Cluster Level
+Checks](https://docs.datadoghq.com/agent/autodiscovery/clusterchecks/) feature
+allows users to monitor endpoints that are external to the cluster (e.g. Load
+Balancer, Database ...), it requires the [Datadog
+Cluster](https://docs.datadoghq.com/agent/kubernetes/cluster/) Agent to run.
 
-Start by creating a token secret for the Datadog agent to communicate securely with the Datadog Cluster Agent.
-`kubectl create secret generic datadog-auth-token --from-literal=token=<THIRTY_2_CHARACTERS_LONG_TOKEN>`{{copy}}
+In this context, the Datadog Agent will be running on the master node and will
+be able to communicate with all the pods on this node (e.g. the Control Plane).
+The Cluster Agent will be running on the worker node and will interact with the
+APIServer to get the details of the Control Plane endpoints. 
 
-Then deploy the workloads by running:
-`for f in assets/04-control-plane/; do kubectl apply -f $f; done`{{execute}} 
+In larger cluster this feature can be leveraged to schedule dynamically checks
+that only need to be run against a set of endpoints living in or outside the
+cluster.
 
-This will deploy the Cluster agent with the correct RBAC as well as a Datadog Agent with the Cluster Check feature enabled.
-You will notice that this agent has a specific toleration in its pod spec (in `spec.template.spec`):
+* Start by creating a token secret for the Datadog agent to communicate securely with the Datadog Cluster Agent.
 
-```
-tolerations:
-  - key: node-role.kubernetes.io/master
-    effect: NoSchedule
-```
+`kubectl create secret generic datadog-auth-token --from-literal=token=$(openssl rand -hex 16)`{{execute}}
+* Then deploy the workloads by running:
 
-*`tolerations:` should be at the same indent level as containers: below it*
+`kubectl apply -f assets/04-control-plane`{{execute}}
 
-This will allow it to run on the master node.
+* You can have a look in the editor at the different manifests we included in
+there:
+  * `agent-cluster-check-worker.yaml` deploys one worker on the master, see its specific `.spec.template.spec.tolerations` value to allow it
+  * `control-plane-configmap.yaml`: check configuration that will be used to
+    monitor the control plane with a Cluster Level check
+  * `cluster-agent-*.yaml`: the various components of the Datadog Cluster Agent
 
-If you exec in the Datadog agent on the master node, you can see all the checks scheduled:
 
-`kubectl get pods --field-selector spec.nodeName=master`
+* If you exec in the Datadog agent on the master node, you can see all the checks scheduled:
 
-Exec in the agent (which should be the only pod in the default namespace on the master node)
+`kubectl get pods --field-selector spec.nodeName=master`{{execute}}
+* Exec in the agent (which should be the only pod in the default namespace on the master node)
 
-`kubectl exec -ti {{pod_name}} bash`{{execute}}
+`kubectl exec -ti {{pod_name}} agent configcheck`{{execute}}
 
-Once in the pod, run `agent configcheck`. This will show you the checks configured and how they were configured (i.e. by the Cluster Agent or as a file). Then, you can use the `agent status` commnand, which will show you that metrics are collected.
+This will show you the checks configured and how they were configured (i.e. by
+the Cluster Agent or as a file).
 
-Check out the official out of the box Control Plane dashboard in your Datadog account [link to come].
+* Then, you can use the `agent status` commnand, which will show you that metrics are collected:
 
-You might have noticed that the agent is also collecting `audit_logs`, these will come very handy in the next section of the workshop.
+`kubectl exec -ti {{pod_name}} agent status`{{execute}}
+
+Check out the official out of the box Control Plane dashboard in your Datadog
+account [link to come].
+
+You might have noticed that the agent is also collecting `audit_logs`, these
+will come very handy in the next section of the workshop.

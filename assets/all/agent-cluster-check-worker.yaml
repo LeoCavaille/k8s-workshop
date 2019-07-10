@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: datadog-agent-cluster-check
 spec:
+  selector:
+    matchLabels:
+      app: datadog-agent-cluster-check
   template:
     metadata:
       labels:
@@ -40,7 +43,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: token
-                name: datadog-auth-token            
+                name: datadog-auth-token
           - name: DD_KUBERNETES_KUBELET_HOST
             valueFrom:
               fieldRef:
@@ -62,7 +65,7 @@ spec:
             mountPath: /host/sys/fs/cgroup
             readOnly: true
           - name: k8s-logs
-            mountPath: /var/log/kubernetes/apiserver 
+            mountPath: /var/log/kubernetes/apiserver
           - mountPath: /conf.d/kube_audit.yaml
             # Log based cluster checks are not supported.
             name: control-plane-yaml
@@ -90,7 +93,7 @@ spec:
         - hostPath:
             path: /sys/fs/cgroup
           name: cgroups
-        - hostPath: 
+        - hostPath:
             path: /var/log/kubernetes/apiserver
           name: k8s-logs
         - configMap:
