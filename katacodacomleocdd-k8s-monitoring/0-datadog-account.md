@@ -1,4 +1,4 @@
-* First login to your [Datadog account](https://app.datadoghq.com) with the
+* First log into your [Datadog account](https://app.datadoghq.com) with the
   provided credentials.
 
 We need to install our first agent to start using our account and
