@@ -1,9 +1,10 @@
 To enable collecting logs from all the pods in the Kubernetes cluster we will
 follow [the official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/?tab=k8sfile#log-collection)
 
-* Go to the [Logs tab in Datadog](https://app.datadoghq.com/logs/onboarding/container) and select Kubernetes. For
-convenience we added the instructions you needed to follow here in Katacoda, see
-below.
+* Go to the [Logs tab in Datadog](https://app.datadoghq.com/logs/onboarding/container) and select *Kubernetes*, 
+  then go at the bottom of the page to validate your choice. For
+  convenience we added the instructions you needed to follow here in Katacoda, see
+  below.
 
 * Add the environment variables to the agent daemonset, in the editor you can go
   to `assets/03-enable-logs/agent-daemonset.yaml` and add the following
