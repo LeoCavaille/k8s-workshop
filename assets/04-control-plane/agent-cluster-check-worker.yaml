@@ -32,6 +32,7 @@ spec:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
       serviceAccountName: datadog-agent-cluster-check
+      hostNetwork: true
       containers:
       - image: datadog/agent:latest
         imagePullPolicy: Always
@@ -60,6 +61,9 @@ spec:
               secretKeyRef:
                 key: token
                 name: datadog-auth-token
+          # /!\ Not necessary normally, but required for katacoda
+          - name: DD_KUBELET_TLS_VERIFY
+            value: "false"
           - name: DD_KUBERNETES_KUBELET_HOST
             valueFrom:
               fieldRef:

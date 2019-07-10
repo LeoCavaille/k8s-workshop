@@ -7,7 +7,7 @@ data:
     cluster_check: true
     init_config:
     instances:
-    - prometheus_url: localhost:443/metrics
+    - prometheus_url: localhost:6443/metrics
 
   kube_audit.yaml: |
     logs:
@@ -29,11 +29,12 @@ data:
     init_config:
     instances:
     - prometheus_url: http://localhost:10251/metrics
-      leader_election: true       
+      leader_election: true
 
   etcd.yaml: |
     cluster_check: true
     init_config:
     instances:
-    - url: http://localhost:2379/metrics
+    - prometheus_url: http://localhost:2379/metrics
       init_config:
+      use_preview: true
