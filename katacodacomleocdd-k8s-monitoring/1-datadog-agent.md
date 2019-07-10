@@ -24,4 +24,4 @@ the next step to fix that!
 _Note: you might have to click the "Finish" button if you are seeing the agent
 installation script._
 
-![Agent Finish button](/assets/img/1-agent-finish.png)
+![Agent Finish button](https://cl.ly/37017b1ed29c/Screenshot%2525202019-07-10%252520at%25252012.01.18.png)
