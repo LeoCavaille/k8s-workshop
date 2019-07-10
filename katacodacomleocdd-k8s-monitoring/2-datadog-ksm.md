@@ -48,5 +48,5 @@ You can now go back to the Out of the box [Kubernetes dashboard](https://app.dat
 
 KSM gives a good insight into the cluster, however, we are still lacking a few key elements.
 
-In the next exercise, we are going to deploy a Datadog Cluster Check runner that will allow us to monitor each component of the Kubernetes Control Plane.
+In the next step, we are going to enable log collection for our containers.
 

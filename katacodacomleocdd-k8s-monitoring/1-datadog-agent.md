@@ -22,6 +22,7 @@ the next step to fix that!
 
 
 _Note: you might have to click the "Finish" button if you are seeing the agent
-installation script._
+installation script. You will not be able to click the button until the agent has
+run and reported metrics, which could take ~2mn_
 
 ![Agent Finish button](https://cl.ly/37017b1ed29c/Screenshot%2525202019-07-10%252520at%25252012.01.18.png)
