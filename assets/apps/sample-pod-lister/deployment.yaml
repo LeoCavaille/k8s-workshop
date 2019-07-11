@@ -1,27 +1,57 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-pod-lister
+  name: pod-lister
+  namespace: default
   labels:
-    app: sample-pod-lister
+    app: pod-lister
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sample-pod-lister
+      app: pod-lister
   template:
     metadata:
       labels:
-        app: sample-pod-lister
+        app: pod-lister
     spec:
+      serviceAccountName: pod-lister
       containers:
       - name: pod-lister
         image: leocavaille/sample-pod-lister:v1
-        volumeMounts:
-          - name: kubedir
-            mountPath: /root/.kube
-            readOnly: true
-      volumes:
-        - hostPath:
-            path: /root/.kube
-          name: kubedir
+
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: pod-lister
+  namespace: default
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pod-lister
+rules:
+- apiGroups:  # Kubelet connectivity
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - watch
+  - list
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: pod-lister
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pod-lister
+subjects:
+- kind: ServiceAccount
+  name: pod-lister
+  namespace: default
