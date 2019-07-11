@@ -1,6 +1,4 @@
-### Welcome to your personal workshop environment!
-
-Before we get started, let's explore.
+Welcome to your personal workshop environment! Before we get started, let's explore.
 
 First, test your client and server are configured properly: 
 `kubectl version`{{execute}}
