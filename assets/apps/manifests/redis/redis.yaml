@@ -11,7 +11,7 @@ metadata:
     heritage: "Tiller"
 type: Opaque
 data:
-  redis-password: "d3pMZHZVSExCdw=="
+  redis-password: "RUhBTkwyRkRNZQ=="
 ---
 # Source: redis/templates/configmap.yaml
 apiVersion: v1
@@ -181,7 +181,7 @@ spec:
       annotations:
         checksum/health: 03477fbd0df84852d966809f4625c6782e04e3ba7761b583568ef60f37e1dd48
         checksum/configmap: f3443e31ffdcf1ee46fa870f5f29e7c7359ac246934775dc9b1eb7f063b7f13b
-        checksum/secret: e6c04ebc55f41e37e5244a4e44325b22909d497473d792b113e7aa9f5b307112
+        checksum/secret: 79611c520ca146dd7466d747fc087d031c9c89c7e41d1b3625e20d88eb2888b3
     spec:      
       securityContext:
         fsGroup: 1001
@@ -304,7 +304,7 @@ spec:
       annotations:
         checksum/health: 03477fbd0df84852d966809f4625c6782e04e3ba7761b583568ef60f37e1dd48
         checksum/configmap: f3443e31ffdcf1ee46fa870f5f29e7c7359ac246934775dc9b1eb7f063b7f13b
-        checksum/secret: 2a229e3dbaaacb36b80e4b74eacb152e8d623648e14422d34ee67f574f37edb3
+        checksum/secret: 7e47e7c81bd24eecefe87454c97ab870b3484668e114e6ae506bc33140c26b6c
     spec:      
       securityContext:
         fsGroup: 1001
@@ -344,7 +344,7 @@ spec:
         - name: REDIS_REPLICATION_MODE
           value: slave
         - name: REDIS_MASTER_HOST
-          value: redis-cache-master-0.redis-cache-headless.datadog.svc.cluster.local
+          value: redis-cache-master-0.redis-cache-headless.default.svc.cluster.local
         - name: REDIS_PORT
           value: "6379"
         - name: REDIS_MASTER_PORT_NUMBER
