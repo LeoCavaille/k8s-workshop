@@ -89,8 +89,7 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal",
-    "uieditorpath": "/root/assets"
+    "uilayout": "editor-terminal"
   },
   "backend": {
     "imageid": "datadog-kubernetes-cluster-running",
