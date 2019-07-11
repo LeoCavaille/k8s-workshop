@@ -8,3 +8,6 @@ We need to install the agent to start using our account. The agent uses an API k
 
 * Next, add your API key to your cluster as a secret so that the agent deployment can use it:
 `kubectl create secret generic datadog-api-key --from-literal=token=$DD_API_KEY`{{execute}}
+
+* Finally, let's make sure our secret is configured as we expect:
+`kubectl describe secret datadog-api-key`{{execute}}

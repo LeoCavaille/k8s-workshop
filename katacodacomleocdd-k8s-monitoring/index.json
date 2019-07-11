@@ -12,8 +12,12 @@
         "text": "01-datadog-account.md"
       },
       {
+        "title": "Part 2: Installing Datadog in Kubernetes",
+        "text": "02a-part-2.md"
+      },
+      {
         "title": "Install the Datadog agent",
-        "text": "02-datadog-agent.md"
+        "text": "02b-datadog-agent.md"
       },
       {
         "title": "Install the kube-state-metrics integration",
