@@ -1,7 +1,7 @@
 * Install the agent by applying to Kubernetes the default install manifests
 (see [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/))
 
-`kubectl apply -f assets/01-agent-deployment`{{copy}}
+`kubectl apply -f assets/02-datadog-agent`{{copy}}
 * Now watch the agent pods as they come live to see the agent being deployed,
   the pod should be marked as `Running` before continuing (press
 <kbd>Ctrl</kbd>+<kbd>C</kbd> to end the watch):
