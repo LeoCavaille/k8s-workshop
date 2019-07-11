@@ -90,6 +90,8 @@ spec:
             name: audit-log-yaml
             subPath: kube_audit.yaml
             readOnly: true
+          - mountPath: /keys
+            name: etcd-certs
       #######################
         livenessProbe:
           exec:
@@ -104,6 +106,9 @@ spec:
         - hostPath:
             path: /proc
           name: procdir
+        - hostPath:
+            path: /etc/kubernetes/pki/etcd
+          name: etcd-certs 
         - hostPath:
             path: /var/log/pods
           name: logpodpath
