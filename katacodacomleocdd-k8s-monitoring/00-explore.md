@@ -1,4 +1,4 @@
-* Welcome to your personal workshop environment!
+### Welcome to your personal workshop environment!
 
 Before we get started, let's explore.
 
