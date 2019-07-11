@@ -6,5 +6,5 @@ First, test your client and server are configured properly:
 You can view some basic information about the cluster: 
 `kubectl cluster-info`{{execute}}
 
-And finally, make sure we've got available nodes in the cluster: 
+And finally, make sure our cluster nodes are `Ready`: 
 `kubectl get nodes`{{execute}}
