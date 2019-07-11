@@ -5,7 +5,11 @@
     "steps": [
       {
         "title": "Explore the environment",
-        "text": "00-explore.md"
+        "text": "00a-explore.md"
+      },
+      {
+        "title": "Explore the cluster",
+        "text": "00b-explore.md"
       },
       {
         "title": "Datadog setup",
