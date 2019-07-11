@@ -1,8 +1,12 @@
 {
-  "title": "Dash Kubernetes Monitoring Workshop",
-  "description": "Learn advanced monitoring of Kubernetes with Datadog",
+  "title": "Kubernetes Deep Dive: Catching & Preventing Failures | Dash 2019",
+  "description": "Catching and preventing failures in Kubernetes using Datadog.",
   "details": {
     "steps": [
+      {
+        "title": "Explore the environment",
+        "text": "00-explore.md"
+      },
       {
         "title": "Log in your Datadog account",
         "text": "01-datadog-account.md"
