@@ -17,4 +17,3 @@ spec:
       containers:
       - name: pod-lister
         image: leocavaille/sample-pod-lister:v1
-        # env:

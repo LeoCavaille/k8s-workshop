@@ -20,7 +20,7 @@
         "text": "3-datadog-logs.md"
       },
       {
-        "title": "Install Cluster Agent & Control Plane monitoring",
+        "title": "Install Kubernetes control plane monitoring",
         "text": "4-control-plane.md"
       },
       {
