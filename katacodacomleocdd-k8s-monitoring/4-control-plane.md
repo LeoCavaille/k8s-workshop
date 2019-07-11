@@ -1,5 +1,3 @@
-At this point, there is only a single agent being run. Yet, we had said there were actually two nodes in this environment (the Kubernetes master where you have your terminal and node01, another Kubernetes node).
-
 * If you list the pods in the `kube-system`  namespace, you will see the components consituting the Control Plane:
 
 `kubectl get pods -n kube-system -o custom-columns=NAME:.metadata.name,NODE:spec.nodeName`{{execute}}
@@ -14,59 +12,40 @@ kube-scheduler-master            master
 [...]
 ```
 
-* If you look at the agent pods however you can see that we have not deployed an
-  agent to the `master` node:
+* In this environment, the control plane pods (apiserver, controller-manager, ...)
+are deployed as [static pods](https://kubernetes.io/docs/tasks/administer-cluster/static-pod/) on the master node.
+You might have noticed before that we have a single agent node running on
+`node01` and not on master. So the first thing we will need to do is to add a
+[toleration](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the agent daemonset to be able to schedule an agent on the
+tainted master node.
 
-`kubectl get pods -lapp=datadog-agent -owide`{{execute}} 
+`kubectl describe node master`{{execute}}
 
-* We are going to deploy an agent on the master and use it as a Cluster Level Check Worker.
+* While we are working on the support of auto-detecting and discovering the static
+pods (it required some [contributions upstream](https://github.com/DataDog/datadog-agent/issues/2803#issuecomment-494073838)) the way to schedule checks on static pods in this
+environment (running Kubernetes 1.11) is to schedule a dummy placeholder pod on
+which we can add annotations which we will use to drive Agent Checks
+configuration.
 
-The [Cluster Level
-Checks](https://docs.datadoghq.com/agent/autodiscovery/clusterchecks/) feature
-allows users to monitor endpoints that are external to the cluster (e.g. Load
-Balancer, Database ...), it requires the [Datadog
-Cluster](https://docs.datadoghq.com/agent/kubernetes/cluster/) Agent to run.
+* You can take a look at `assets/04-control-plane/static-pods-discovery.yaml` to
+see how that is implemented ([official documetation](https://docs.datadoghq.com/agent/autodiscovery/integrations/?tab=kubernetespodannotations#configuration)).
 
-In this context, the Datadog Agent will be running on the master node and will
-be able to communicate with all the pods on this node (e.g. the Control Plane).
-The Cluster Agent will be running on the worker node and will interact with the
-APIServer to get the details of the Control Plane endpoints. 
+* Another agent configuration we do here is to deploy an additional logs agent
+configuration to tail the apiserver audit logs. You can have a look at
+`assets/04-control-plane/agent-daemonset` that has some specific comments.
 
-In larger cluster this feature can be leveraged to schedule dynamically checks
-that only need to be run against a set of endpoints living in or outside the
-cluster.
-
-* Start by creating a token secret for the Datadog agent to communicate securely with the Datadog Cluster Agent.
-
-`kubectl create secret generic datadog-auth-token --from-literal=token=$(openssl rand -hex 16)`{{execute}}
-* Then deploy the workloads by running:
+* Then deploy the new configuration manifests:
 
 `kubectl apply -f assets/04-control-plane`{{execute}}
+* Find first the datadog-agent pod that runs on the master node
 
-* You can have a look in the editor at the different manifests we included in
-there:
-  * `agent-cluster-check-worker.yaml` deploys one worker on the master, see its specific `tolerations` and `nodeAffinity` to do this
-  * `control-plane-configmap.yaml`: check configuration that will be used to
-    monitor the control plane with a Cluster Level check
-  * `cluster-agent-*.yaml`: the various components of the Datadog Cluster Agent
+`kubectl get pods -lapp=datadog-agent -owide`{{execute}}
+* Exec in the agent to see what checks are configured and being run (you should now see the control plane checks we added: `kube_apiserver_metrics`, `kube_controller_manager`, `kube_scheduler`, `etcd`, `kube_audit`)
 
+`kubectl exec -ti datadog-agent-{{pod_suffix}} agent configcheck`{{copy}}
+* Then, you can use the `agent status` commnand, which will show you that metrics/logs are collected:
 
-* If you exec in the Datadog agent on the master node, you can see all the checks scheduled:
-
-`kubectl get pods --field-selector spec.nodeName=master`{{execute}}
-* Exec in the agent (which should be the only pod in the default namespace on the master node)
-
-`kubectl exec -ti datadog-agent-cluster-check-{{pod_suffix}} agent configcheck`{{execute}}
-
-This will show you the checks configured and how they were configured (i.e. by
-the Cluster Agent or as a file).
-
-* Then, you can use the `agent status` commnand, which will show you that metrics are collected:
-
-`kubectl exec -ti datadog-agent-cluster-check-{{pod_suffix}} agent status`{{execute}}
+`kubectl exec -ti datadog-agent-{{pod_suffix}} agent status`{{execute}}
 
 Check out the official out of the box Control Plane dashboard in your Datadog
 account [link to come].
-
-You might have noticed that the agent is also collecting `audit_logs`, these
-will come very handy in the next section of the workshop.
