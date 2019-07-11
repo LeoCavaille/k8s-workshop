@@ -10,7 +10,7 @@ The agent will use a process called Autodiscovery to identify that KSM is runnin
 * For convenience, we already downloaded the kube-state-metrics manifests, apply
 them:
 
-`kubectl apply -f assets/02-ksm-deployment`{{copy}}
+`kubectl apply -f assets/03-datadog-ksm`{{copy}}
 * You can watch the result, pods are deployed in `kube-system` by default:
 
 `kubectl get pods -w -owide -l k8s-app=kube-state-metrics -n kube-system`{{execute}}

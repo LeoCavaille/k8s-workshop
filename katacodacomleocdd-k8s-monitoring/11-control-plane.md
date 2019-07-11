@@ -27,7 +27,7 @@ environment (running Kubernetes 1.11) is to schedule a dummy placeholder pod on
 which we can add annotations which we will use to drive Agent Checks
 configuration.
 
-* You can take a look at `assets/04-control-plane/static-pods-discovery.yaml` to
+* You can take a look at `assets/11-control-plane/static-pods-discovery.yaml` to
 see how that is implemented ([official documetation](https://docs.datadoghq.com/agent/autodiscovery/integrations/?tab=kubernetespodannotations#configuration)).
 
 * Another agent configuration we do here is to deploy an additional logs agent

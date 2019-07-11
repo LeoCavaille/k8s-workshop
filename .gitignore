@@ -1,3 +1,6 @@
 *.swp
 *.swo
 assets/apps/sample-pod-lister/sample-pod-lister
+
+assets/apps/manifests/redis/redis-8.0.4.tgz
+assets/apps/manifests/redis/values.yaml
