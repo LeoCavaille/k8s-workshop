@@ -17,3 +17,11 @@ spec:
       containers:
       - name: pod-lister
         image: leocavaille/sample-pod-lister:v1
+        volumeMounts:
+          - name: kubedir
+            mountPath: /root/.kube
+            readOnly: true
+      volumes:
+        - hostPath:
+            path: /root/.kube
+          name: kubedir
