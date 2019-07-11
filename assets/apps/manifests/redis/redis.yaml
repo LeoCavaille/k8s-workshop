@@ -11,7 +11,7 @@ metadata:
     heritage: "Tiller"
 type: Opaque
 data:
-  redis-password: "NkZJejY1N0tCQw=="
+  redis-password: "d3pMZHZVSExCdw=="
 ---
 # Source: redis/templates/configmap.yaml
 apiVersion: v1
@@ -181,7 +181,7 @@ spec:
       annotations:
         checksum/health: 03477fbd0df84852d966809f4625c6782e04e3ba7761b583568ef60f37e1dd48
         checksum/configmap: f3443e31ffdcf1ee46fa870f5f29e7c7359ac246934775dc9b1eb7f063b7f13b
-        checksum/secret: 9172f5748dd30b0886df5a846ce4c10ecafbc3cf33d795647da8ac813053d161
+        checksum/secret: e6c04ebc55f41e37e5244a4e44325b22909d497473d792b113e7aa9f5b307112
     spec:      
       securityContext:
         fsGroup: 1001
@@ -267,22 +267,10 @@ spec:
       - name: config
         configMap:
           name: redis-cache
+      - name: "redis-data"
+        emptyDir: {}
       - name: redis-tmp-conf
         emptyDir: {}
-  volumeClaimTemplates:
-    - metadata:
-        name: redis-data
-        labels:
-          app: "redis"
-          component: "master"
-          release: "redis-cache"
-          heritage: "Tiller"
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
   updateStrategy:
     type: RollingUpdate
 
@@ -316,7 +304,7 @@ spec:
       annotations:
         checksum/health: 03477fbd0df84852d966809f4625c6782e04e3ba7761b583568ef60f37e1dd48
         checksum/configmap: f3443e31ffdcf1ee46fa870f5f29e7c7359ac246934775dc9b1eb7f063b7f13b
-        checksum/secret: 340b8ba1481338edae6f1b655f1cbb3a62896e147a440e04acf6f6528bbac7c9
+        checksum/secret: 2a229e3dbaaacb36b80e4b74eacb152e8d623648e14422d34ee67f574f37edb3
     spec:      
       securityContext:
         fsGroup: 1001
@@ -420,20 +408,8 @@ spec:
         emptyDir: {}
       - name: redis-tmp-conf
         emptyDir: {}
-  volumeClaimTemplates:
-    - metadata:
-        name: redis-data
-        labels:
-          app: "redis"
-          component: "slave"
-          release: "redis-cache"
-          heritage: "Tiller"
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+      - name: redis-data
+        emptyDir: {}
   updateStrategy:
     type: RollingUpdate
 
