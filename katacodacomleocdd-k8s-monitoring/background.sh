@@ -1,6 +1,5 @@
 git clone https://github.com/LeoCavaille/k8s-workshop
-mv k8s-workshop/assets ./assets
-rm -rf k8s-workshop
+ln -s k8s-workshop/assets ./assets
 
 # add audit logs to the apiserver
 mkdir -p /etc/kubernetes/audit-policies
