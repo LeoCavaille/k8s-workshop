@@ -16,7 +16,7 @@ metadata:
         {"prometheus_url": "localhost:6443/metrics"},
         {"prometheus_url": "http://localhost:10252/metrics"},
         {"prometheus_url": "http://localhost:10251/metrics"},
-        {"prometheus_url": "http://localhost:2379/metrics", "use_preview": true}
+        {"prometheus_url": "https://localhost:2379/metrics", "use_preview": true, "ssl_verify": false}
       ]
 spec:
   # schedule on the master node
