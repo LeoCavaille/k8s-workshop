@@ -1,14 +1,18 @@
-Once logged in, you will be prompted with install instructions. You need to install the agent to start using Datadog.  The agent uses an API key to authenticate with the Datadog API - to run the agent in Kubernetes, we must make the API key available as a `Secret`.
+In order to begin using Datadog, you must install the agent. The agent uses an API key to authenticate with the Datadog API; to run the agent in Kubernetes, we must make the API key available in a Kubernetes `Secret`.
 
-* Log into your [Datadog account](https://app.datadoghq.com) with the provided credentials. 
-
-* On the setup page, choose "from source" at the bottom. Copy your API key and expose it as an environment variable:
+* Copy your API key from the Datadog agent configuration page and export it as an environment variable:
 `export DD_API_KEY=<your-api-key>`{{copy}}
 
 * Create a `Secret` with your API key:
 `kubectl create secret generic datadog-api-key --from-literal=token=$DD_API_KEY`{{execute}}
 
-* Finally, make sure the secret is configured as expected:
-`kubectl describe secret datadog-api-key`{{execute}}
+**Before moving on, make sure your secret is configured as expected.** You should have 32 bytes of secret data in the key `token` in an `Opaque` secret.
 
-There should be 32 bytes of secret data in an `Opaque` secret.
+<details>
+<summary>Hint</summary>
+Try `kubectl get secrets` to list all secrets in the current namespace. 
+
+Use `kubectl describe secret <your-secret-name>` to see details of a specific secret. 
+
+Use `kubectl get secret -oyaml <your-secret-name>` to see the full YAML representation of a secret.
+</details>
