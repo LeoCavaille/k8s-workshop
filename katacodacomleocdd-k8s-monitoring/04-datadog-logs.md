@@ -6,10 +6,7 @@ follow [the official documentation](https://docs.datadoghq.com/agent/kubernetes/
   convenience we added the instructions you needed to follow here in Katacoda, see
   below.
 
-* Add the environment variables to the agent daemonset, in the editor you can go
-  to `assets/03-enable-logs/agent-daemonset.yaml` and add the following
-environment variables to the agent container:
-
+* To enable logs in the agent, a few environment variables are required. We've prepared a patch to enable them:
 ```
     - name: DD_LOGS_ENABLED
       value: "true"
@@ -17,14 +14,11 @@ environment variables to the agent container:
       value: "true"
 ```
 
-_Note: you don't need to save your changes, files are auto-saved._
+We've prepared a patch to apply the change:
+`cat assets/04-datadog-logs/agent-daemonset-enable-logs.patch.yaml`{{execute}}
+`kubectl patch daemonset datadog-agent --patch "$(cat assets/04-datadog-logs/agent-daemonset-enable-logs.patch.yaml)"`{{execute}}
 
-* Then reapply the manifest:
-
-`kubectl apply -f assets/03-enable-logs/agent-daemonset.yaml`{{copy}}
-
-* Look at the agent pods:
-
+* Check if your change has been rolled out:
 `kubectl get pods -lapp=datadog-agent`{{execute}}
 
 **Even with the new manifest uploaded you can see that nothing is changing, this
@@ -33,18 +27,21 @@ means according to the documentation](https://kubernetes.io/docs/tasks/manage-da
 would need to delete the current pods to get the changes. To ease future changes
 let's use the `RollingUpdate` strategy:**
 
-* Add to the same file you modified earlier under the `.spec` path:
-
+* To enable rolling updates, we must set the `updateStrategy` on our daemonset:
 ```
 spec:
   updateStrategy:
     type: RollingUpdate
 ```
 
-* Re-apply the modified manifest, and watch the changes now happen
+We've prepared a patch to do just that:
+`cat assets/04-datadog-logs/agent-daemonset-rolling-update.patch.yaml`{{execute}}
+`kubectl patch daemonset datadog-agent --patch "$(cat assets/04-datadog-logs/agent-daemonset-rolling-update.patch.yaml)"`
+
+* Watch the changes now happen:
+`kubectl get pods -w -lapp=datadog-agent`{{execute}}
 
 * You can also watch the rolling update of the daemonset to see the change being deployed:
-
 `kubectl rollout status ds/datadog-agent`{{copy}}
 
 * This should have unblocked the logs view and you should see logs flowing now.

@@ -1,0 +1,10 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: datadog-agent
+          env:
+            - name: DD_LOGS_ENABLED
+              value: "true"
+            - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+              value: "true"
