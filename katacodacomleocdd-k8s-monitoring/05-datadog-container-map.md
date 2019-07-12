@@ -10,4 +10,4 @@ Try creating some useful vizualizations on the container map:
 
 * Get creative! What other kinds of useful groupings can you make?
 
-[Container Map](https://app.datadoghq.com/infrastructure/map?node_type=container)
+### [Container Map](https://app.datadoghq.com/infrastructure/map?node_type=container)

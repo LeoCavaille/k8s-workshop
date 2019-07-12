@@ -15,8 +15,8 @@ follow [the official documentation](https://docs.datadoghq.com/agent/kubernetes/
 ```
 
 We've prepared a patch to apply the change:
-`cat assets/04-datadog-logs/agent-daemonset-enable-logs.patch.yaml`{{execute}}
-`kubectl patch daemonset datadog-agent --patch "$(cat assets/04-datadog-logs/agent-daemonset-enable-logs.patch.yaml)"`{{execute}}
+`cat assets/08-datadog-logs/agent-daemonset-enable-logs.patch.yaml`{{execute}}
+`kubectl patch daemonset datadog-agent --patch "$(cat assets/08-datadog-logs/agent-daemonset-enable-logs.patch.yaml)"`{{execute}}
 
 * Check if your change has been rolled out:
 `kubectl get pods -lapp=datadog-agent`{{execute}}
@@ -35,8 +35,8 @@ spec:
 ```
 
 We've prepared a patch to do just that:
-`cat assets/04-datadog-logs/agent-daemonset-rolling-update.patch.yaml`{{execute}}
-`kubectl patch daemonset datadog-agent --patch "$(cat assets/04-datadog-logs/agent-daemonset-rolling-update.patch.yaml)"`
+`cat assets/08-datadog-logs/agent-daemonset-rolling-update.patch.yaml`{{execute}}
+`kubectl patch daemonset datadog-agent --patch "$(cat assets/08-datadog-logs/agent-daemonset-rolling-update.patch.yaml)"`
 
 * Watch the changes now happen:
 `kubectl get pods -w -lapp=datadog-agent`{{execute}}

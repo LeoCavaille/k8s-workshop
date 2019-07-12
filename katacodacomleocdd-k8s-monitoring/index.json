@@ -16,36 +16,40 @@
         "text": "02-datadog-agent.md"
       },
       {
+        "title": "Master taints and the agent",
+        "text": "03-datadog-agent-master.md"
+      },
+      {
         "title": "Run the agent everywhere",
-        "text": "03-datadog-agent-everywhere.md"
+        "text": "04-datadog-agent-everywhere.md"
       },
       {
         "title": "Visualize the cluster in Datadog",
-        "text": "04-datadog-container-map.md"
+        "text": "05-datadog-container-map.md"
       },
       {
         "title": "Understanding Kubernetes observability data",
-        "text": "05-datadog-k8s-dashboard.md"
+        "text": "06-datadog-k8s-dashboard.md"
       },
       {
         "title": "Install the kube-state-metrics integration",
-        "text": "06-datadog-ksm.md"
+        "text": "07-datadog-ksm.md"
       },
       {
         "title": "Enable Datadog log collection",
-        "text": "07-datadog-logs.md"
+        "text": "08-datadog-logs.md"
       },
       {
         "title": "(Optional) CoreDNS metrics analysis",
-        "text": "07a-coredns-metrics.md"
+        "text": "09-coredns-metrics.md"
       },
       {
         "title": "(Optional) CoreDNS logs setup & analysis",
-        "text": "07b-coredns-logs.md"
+        "text": "09-coredns-logs.md"
       },
       {
         "title": "Deploy sample applications",
-        "text": "08-deploy-sample-apps.md"
+        "text": "09-deploy-sample-apps.md"
       },
       {
         "title": "Use Datadog to troubleshoot application failures",
