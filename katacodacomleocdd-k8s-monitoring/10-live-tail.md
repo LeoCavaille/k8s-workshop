@@ -3,9 +3,16 @@ Live tail shows a realtime stream of all logs as they are ingested. In order to 
 * Deploy the sample application:
 `kubectl apply -f assets/10-live-tail/log-a-lot.yaml`{{copy}}
 
-* Observe logs flowing through live tail.
+* Visit the live tail page by click from the left navigation pane: Logs > Live Tail.
 
-Visit the live tail page by click from the left navigation pane: Logs > Live Tail.
+* Filter logs shown in live tail to the `log-a-lot` application.
+
+<details>
+<summary>Hint</summary>
+Logs can be filtered by any facet or tag. <br/> <br/>
+
+Find the tags on the `log-a-lot` application using `kubectl describe pod`.
+</details>
 
 To demonstrate live tail sampling and streaming, let's increase the replica count.
 
