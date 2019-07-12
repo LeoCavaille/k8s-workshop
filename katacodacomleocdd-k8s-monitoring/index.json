@@ -44,16 +44,20 @@
         "text": "09-agent-rollout.md"
       },
       {
+        "title": "View logs in live tail",
+        "text": "10-live-tail.md"
+      },
+      {
         "title": "Install Datadog integrations for the Kubernetes control plane",
-        "text": "10-control-plane.md"
+        "text": "11-control-plane.md"
       },
       {
         "title": "View realtime container details in Datadog",
-        "text": "11-container-details.md"
+        "text": "12-container-details.md"
       },
       {
         "title": "Collect apiserver audit logs",
-        "text": "12-audit-logs.md"
+        "text": "13-audit-logs.md"
       },
       {
         "title": "(Optional) CoreDNS metrics analysis",

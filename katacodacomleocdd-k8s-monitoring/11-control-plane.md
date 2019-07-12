@@ -23,7 +23,7 @@ The configuration in `assets/11-control-plane/static-pods-discovery.yaml` drives
 </details>
 
 * Deploy the control plane checks:
-`kubectl apply -f assets/10-control-plane`{{copy}}
+`kubectl apply -f assets/11-control-plane`{{copy}}
 
 * Verify that the checks are running for `etcd`, `kube_apiserver`, `kube_scheduler`, and `kube_controller_manager`.
 
