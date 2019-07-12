@@ -1,0 +1,34 @@
+The Datadog agent runs as a `DaemonSet` with a replica on every node in the cluster that matches the selector.
+
+<details>
+<summary>Additional Information</summary>
+The workshop includes with the manifests to install the agent.  For more details, see the [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/).
+</details>
+
+*  Install the agent in your cluster:
+`kubectl apply -f assets/02-datadog-agent`{{execute}}
+
+Verify your `DaemonsetSet` is deployed, and you have the expected `DESIRED/CURRENT/READY/UP-TO-DATE/AVALAIBLE` replica count of 2, indicating our agent deployment is healthy.
+
+<details>
+<summary>Hint</summary>
+`kubectl get ds` prints a list of all DaemonSets in the current namespace. <br/> <br/>
+
+`kubectl get ds <ds-name>` prints details about a specific DaemonSet. 
+</details>
+
+
+Wait for all datadog-agent pods to enter `Running` state.
+
+<details>
+<summary>Hint</summary>
+`kubectl get pods` prints a list of all pods in the current namespace. <br/> <br/>
+
+`kubectl get pods -owide` prints a list of all pods with extra information, like the node they run on. <br/> <br/>
+
+`kubectl get pods -w` prints and updates a list of all pods as changes occur on the server. (Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to end the watch)
+</details>
+
+_Note: you might have to click the "Finish" button if you are seeing the agent
+installation prompt. You will not be able to click the button until the agent has
+run and reported metrics, which could take up to 2 minutes._
