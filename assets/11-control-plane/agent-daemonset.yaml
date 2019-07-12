@@ -118,7 +118,3 @@ spec:
         - hostPath:
             path: /var/log/kubernetes
           name: klogpath
-        - configMap:
-            defaultMode: 420
-            name: audit-log-yaml
-          name: audit-log-yaml
