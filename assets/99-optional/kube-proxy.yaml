@@ -17,7 +17,7 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ""
         ad.datadoghq.com/kube-proxy.check_names: '["kube_proxy"]'
         ad.datadoghq.com/kube-proxy.init_configs: '[{}]'
-        ad.datadoghq.com/kube-proxy.instances: '[{ "prometheus_url": "http://%%host%%:10249/metrics" }]'
+        ad.datadoghq.com/kube-proxy.instances: '[{ "prometheus_url": "http://127.0.0.1:10249/metrics" }]'
       creationTimestamp: null
       labels:
         k8s-app: kube-proxy
