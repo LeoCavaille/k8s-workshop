@@ -1,9 +1,9 @@
 As you can see the widgets of the state of your kubernetes resources (DaemonSets, Deployments,
 ReplicaSets, Containers) are empty.
 
-This data is provided by [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics). Kube State Metrics also known as KSM is a simple service that listens to the Kubernetes API server and generates metrics about the state of the objects.
+This data is provided by [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics). Kube State Metrics (also known as KSM) is a simple service that listens to the Kubernetes API server and generates metrics about the state of the objects.
 
-You can find the official Datadog documentation [here](https://docs.datadoghq.com/integrations/kubernetes/#setup-kubernetes-state) for the check.
+> You can find the official Datadog documentation [here](https://docs.datadoghq.com/integrations/kubernetes/#setup-kubernetes-state) for the check.
 
 The agent will use a process called Autodiscovery to identify that KSM is running, so it can start crawling data from the `/metrics` endpoint of the KSM pods.
 
