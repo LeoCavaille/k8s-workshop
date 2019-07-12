@@ -13,6 +13,8 @@ spec:
       name: datadog-agent
     spec:
       serviceAccountName: datadog-agent
+      tolerations:
+        - operator: Exists
       containers:
       - image: datadog/agent:latest
         imagePullPolicy: Always
