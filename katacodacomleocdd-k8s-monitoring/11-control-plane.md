@@ -48,4 +48,4 @@ configuration to tail the apiserver audit logs. You can have a look at
 `kubectl exec -ti datadog-agent-{{pod_suffix}} agent status`{{execute}}
 
 Check out the official out of the box Control Plane dashboard in your Datadog
-account [link to come].
+account [TODO link to come].
