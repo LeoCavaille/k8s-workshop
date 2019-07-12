@@ -1,0 +1,7 @@
+spec:
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/kube-proxy.check_names: '["kube_proxy"]'
+        ad.datadoghq.com/kube-proxy.init_configs: '[{}]'
+        ad.datadoghq.com/kube-proxy.instances: '[{ "prometheus_url": "http://127.0.0.1:10249/metrics" }]'
