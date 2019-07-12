@@ -5,7 +5,7 @@ The Datadog agent runs as a `DaemonSet` with a replica on every node in the clus
 The workshop includes with the manifests to install the agent.  For more details, see the [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/).
 </details>
 
-*  Install the agent in your cluster:
+* Install the agent in your cluster: <br/>
 `kubectl apply -f assets/02-datadog-agent`{{execute}}
 
 Verify your `DaemonsetSet` is deployed, and you have the expected `DESIRED/CURRENT/READY/UP-TO-DATE/AVALAIBLE` replica count of 2, indicating our agent deployment is healthy.
