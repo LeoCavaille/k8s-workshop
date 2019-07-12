@@ -13,59 +13,47 @@
       },
       {
         "title": "Install Datadog in Kubernetes",
-        "text": "02-datadog-agent.md"
+        "text": "02-agent.md"
       },
       {
-        "title": "Master taints and the agent",
-        "text": "03-datadog-agent-master.md"
+        "title": "Taints, tolerations, and the agent",
+        "text": "03-agent-master.md"
       },
       {
         "title": "Run the agent everywhere",
-        "text": "04-datadog-agent-everywhere.md"
+        "text": "04-agent-everywhere.md"
       },
       {
         "title": "Visualize the cluster in Datadog",
-        "text": "05-datadog-container-map.md"
+        "text": "05-container-map.md"
       },
       {
         "title": "Understanding Kubernetes observability data",
-        "text": "06-datadog-k8s-dashboard.md"
+        "text": "06-k8s-dashboard.md"
       },
       {
         "title": "Install the kube-state-metrics integration",
-        "text": "07-datadog-ksm.md"
+        "text": "07-ksm.md"
       },
       {
         "title": "Enable Datadog log collection",
-        "text": "08-datadog-logs.md"
+        "text": "08-logs.md"
       },
       {
-        "title": "(Optional) CoreDNS metrics analysis",
-        "text": "09-coredns-metrics.md"
+        "title": "Update the agent rollout strategy",
+        "text": "09-agent-rollout.md"
       },
       {
-        "title": "(Optional) CoreDNS logs setup & analysis",
-        "text": "09-coredns-logs.md"
+        "title": "Install Datadog integrations for the Kubernetes control plane",
+        "text": "10-control-plane.md"
       },
       {
-        "title": "Deploy sample applications",
-        "text": "09-deploy-sample-apps.md"
+        "title": "View realtime container details in Datadog",
+        "text": "11-container-details.md"
       },
       {
-        "title": "Use Datadog to troubleshoot application failures",
-        "text": "09-datadog-app-failures.md"
-      },
-      {
-        "title": "(Optional) More application failures",
-        "text": "10-datadog-more-app-failures.md"
-      },
-      {
-        "title": "Install Kubernetes control plane Datadog integrations",
-        "text": "11-control-plane.md"
-      },
-      {
-        "title": "Collect apiserver audit logs in Datadog",
-        "text": "12-apiserver-audit-logs.md"
+        "title": "Collect apiserver audit logs",
+        "text": "12-audit-logs.md"
       },
       {
         "title": "Set up apiserver audit logs view in Datadog",
@@ -76,20 +64,40 @@
         "text": "14-audit-log-policies.md"
       },
       {
+        "title": "(Optional) CoreDNS metrics analysis",
+        "text": "x-coredns-metrics.md"
+      },
+      {
+        "title": "(Optional) CoreDNS logs setup & analysis",
+        "text": "x-coredns-logs.md"
+      },
+      {
+        "title": "Deploy sample applications",
+        "text": "x-deploy-sample-apps.md"
+      },
+      {
+        "title": "Use Datadog to troubleshoot application failures",
+        "text": "x-datadog-app-failures.md"
+      },
+      {
+        "title": "(Optional) More application failures",
+        "text": "x-datadog-more-app-failures.md"
+      },
+      {
         "title": "Use case: diagnose apiserver spam",
-        "text": "15-apiserver-spam.md"
+        "text": "x-apiserver-spam.md"
       },
       {
         "title": "Use case: kubectl blame aka. find who did it",
-        "text": "16-audit-action.md"
+        "text": "x-audit-action.md"
       },
       {
         "title": "(Optional) Use case: find logs for all actors associated to a deployment",
-        "text": "17-deployment-logs.md"
+        "text": "x-deployment-logs.md"
       },
       {
         "title": "(Optional) Use case: fix the app spamming the apiserver",
-        "text": "18-fix-spammy-app.md"
+        "text": "x-fix-spammy-app.md"
       }
     ],
     "intro": {
