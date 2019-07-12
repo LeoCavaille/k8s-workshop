@@ -24,6 +24,10 @@
         "text": "02b-datadog-agent.md"
       },
       {
+        "title": "Visualize containers in Datadog",
+        "text": "02c-datadog-container-map.md"
+      },
+      {
         "title": "Install the kube-state-metrics integration",
         "text": "03-datadog-ksm.md"
       },
