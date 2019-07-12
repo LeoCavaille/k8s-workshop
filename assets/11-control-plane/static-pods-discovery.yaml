@@ -18,6 +18,18 @@ metadata:
         {"prometheus_url": "http://localhost:10251/metrics"},
         {"prometheus_url": "https://localhost:2379/metrics", "use_preview": true, "ssl_verify": false, "ssl_cert": "/keys/server.crt", "ssl_ca_cert": "/keys/ca.crt", "ssl_private_key": "/keys/server.key"}
       ]
+    ad.datadoghq.com/dummy.logs: |
+      [
+        {
+          "type": "file",
+          "path": "/var/log/kubernetes/apiserver/audit.log",
+          "service": "kube-apiserver-audit",
+          "source": "kubernetes"",
+          "tags": "kube-apiserver:audit"
+        },
+        {},{},{}
+      ]
+
 spec:
   # schedule on the master node
   tolerations:
