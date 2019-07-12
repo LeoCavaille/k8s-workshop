@@ -8,12 +8,12 @@
         "text": "00-explore.md"
       },
       {
-        "title": "Datadog setup",
+        "title": "Datadog account setup",
         "text": "01-datadog-account.md"
       },
       {
-        "title": "Install the Datadog agent",
-        "text": "02b-datadog-agent.md"
+        "title": "Install Datadog in Kubernetes",
+        "text": "02-datadog-agent.md"
       },
       {
         "title": "Visualize the cluster in Datadog",
