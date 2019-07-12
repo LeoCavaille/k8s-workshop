@@ -56,14 +56,6 @@
         "text": "12-audit-logs.md"
       },
       {
-        "title": "Set up apiserver audit logs view in Datadog",
-        "text": "13-datadog-audit-logs.md"
-      },
-      {
-        "title": "(Optional) Tweak the audit log policies",
-        "text": "14-audit-log-policies.md"
-      },
-      {
         "title": "(Optional) CoreDNS metrics analysis",
         "text": "x-coredns-metrics.md"
       },
