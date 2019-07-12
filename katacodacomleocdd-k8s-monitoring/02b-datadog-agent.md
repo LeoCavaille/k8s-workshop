@@ -16,12 +16,6 @@ healthy.
 * `kubectl describe` shows even more detail about the `DaemonSet`:
 `kubectl describe daemonset datadog-agent`{{execute}}
 
-Now your Datadog account should be starting to get monitoring data, go take a
-look at your [Kubernetes dashboard](https://app.datadoghq.com/screen/integration/86), you should see it
-getting updates on the state of your cluster. Some metrics are missing, go to
-the next step to fix that!
-
-
 _Note: you might have to click the "Finish" button if you are seeing the agent
 installation script. You will not be able to click the button until the agent has
 run and reported metrics, which could take ~2mn_

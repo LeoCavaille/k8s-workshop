@@ -28,6 +28,10 @@
         "text": "02c-datadog-container-map.md"
       },
       {
+        "title": "Understanding Kubernetes observability data",
+        "text": "02d-datadog-k8s-dashboard.md"
+      },
+      {
         "title": "Install the kube-state-metrics integration",
         "text": "03-datadog-ksm.md"
       },
