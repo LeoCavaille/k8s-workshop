@@ -1,13 +1,16 @@
-We need to install the agent to start using our account. The agent uses an API key to authenticate with the Datadog API.
+* Log into your [Datadog account](https://app.datadoghq.com) with the provided credentials. 
 
-* Log into your [Datadog account](https://app.datadoghq.com) with the provided credentials.
-* After logging in, you will be prompted to install the agent.  You will be blocked until a metric is reported to your account.
+Once logged in, you will be prompted with install instructions. You need to install the agent to start using Datadog. 
 
-* Choose "from source" at the bottom, and copy your API key from the script. Paste it in the following command:
+The agent uses an API key to authenticate with the Datadog API. It's time to fetch the API key and make it available in your cluster.
+
+* On the Datadog prompt, choose "from source" at the bottom. Copy your API key from the script and add it to the the environment as follows:
 `export DD_API_KEY=<your-api-key>`{{copy}}
 
-* Next, add your API key to your cluster as a secret so that the agent deployment can use it:
+* The Datadog agent reads the API key from a Kubernetes `Secret`. Create a `Secret` with your API key:
 `kubectl create secret generic datadog-api-key --from-literal=token=$DD_API_KEY`{{execute}}
 
-* Finally, let's make sure our secret is configured as we expect:
+* Finally, make sure the secret is configured as expected:
 `kubectl describe secret datadog-api-key`{{execute}}
+
+You should see 32 bytes of secret data in an `Opaque` secret.

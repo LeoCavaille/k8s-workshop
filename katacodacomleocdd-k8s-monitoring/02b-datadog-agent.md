@@ -1,19 +1,20 @@
-* Install the agent by applying to Kubernetes the default install manifests
-(see [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/))
+* Install the agent in your Kubernetes cluster:
+`kubectl apply -f assets/02-datadog-agent`{{execute}}
 
-`kubectl apply -f assets/02-datadog-agent`{{copy}}
-* Now watch the agent pods as they come live to see the agent being deployed,
-  the pod should be marked as `Running` before continuing (press
+The manifests are included with the workshop. For more details, see the [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/).
+
+* Watch the agent pods as they becoome available. Pods should be marked as `Running` before moving forward (press
 <kbd>Ctrl</kbd>+<kbd>C</kbd> to end the watch):
+`kubectl get pods -w -owide`{{execute}}
 
-`kubectl get pods -w -owide`{{copy}}
-* You can also look at the status of the daemonset
-
-`kubectl get daemonset`{{copy}}
-
+* Check the status of the Datadog agent `DaemonSet`: 
+`kubectl get daemonset`{{execute}}
 At this point we should see `DESIRED` as 1 and also
 `CURRENT/READY/UP-TO-DATE/AVALAIBLE` to 1 indicating our agent deployment is
 healthy.
+
+* `kubectl describe` shows even more detail about the `DaemonSet`:
+`kubectl describe daemonset datadog-agent`{{execute}}
 
 Now your Datadog account should be starting to get monitoring data, go take a
 look at your [Kubernetes dashboard](https://app.datadoghq.com/screen/integration/86), you should see it

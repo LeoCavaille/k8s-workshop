@@ -8,3 +8,5 @@ Now, let's test out your Kubernetes cluster.
 
 * And finally, make sure our cluster nodes are `Ready`: 
 `kubectl get nodes`{{execute}}
+
+If your nodes are `NotReady`, give it a minute and try again until they become `Ready`.
