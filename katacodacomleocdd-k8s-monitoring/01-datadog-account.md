@@ -12,9 +12,9 @@ You should have 32 bytes of secret data in the key `token` in an `Opaque` secret
 
 <details>
 <summary>Hint</summary>
-`kubectl get secrets`{{copy}} prints a list of all secrets in the current namespace. <br/>
+`kubectl get secrets`{{copy}} prints a list of all secrets in the current namespace. <br/> <br/>
 
-`kubectl describe secret <your-secret-name>`{{copy}} prints details of a specific secret. <br/>
+`kubectl describe secret <your-secret-name>`{{copy}} prints details of a specific secret. <br/> <br/>
 
-`kubectl get secret -oyaml <your-secret-name>`{{copy}} prints the full YAML representation of a secret. <br/>
+`kubectl get secret -oyaml <your-secret-name>`{{copy}} prints the full YAML representation of a secret.
 </details>
