@@ -97,7 +97,7 @@
     }
   },
   "environment": {
-    "uilayout": "terminal-terminal"
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "datadog-kubernetes-cluster-running",
