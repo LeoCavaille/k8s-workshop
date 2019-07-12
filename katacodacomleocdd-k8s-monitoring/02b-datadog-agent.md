@@ -1,7 +1,9 @@
+The Datadog agent runs as a `DaemonSet` with a replica on every node in the cluster.
+
 * Install the agent in your Kubernetes cluster:
 `kubectl apply -f assets/02-datadog-agent`{{execute}}
 
-The manifests are included with the workshop. For more details, see the [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/).
+> The manifests are included with the workshop. For more details, see the [official documentation](https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/).
 
 * Watch the agent pods as they becoome available. Pods should be marked as `Running` before moving forward (press
 <kbd>Ctrl</kbd>+<kbd>C</kbd> to end the watch):
