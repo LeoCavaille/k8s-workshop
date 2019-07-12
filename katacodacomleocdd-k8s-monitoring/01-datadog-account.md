@@ -6,13 +6,15 @@ In order to begin using Datadog, you must install the agent. The agent uses an A
 * Create a `Secret` with your API key:
 `kubectl create secret generic datadog-api-key --from-literal=token=$DD_API_KEY`{{execute}}
 
-**Before moving on, make sure your secret is configured as expected.** You should have 32 bytes of secret data in the key `token` in an `Opaque` secret.
+**Before moving on, make sure your secret is configured as expected.** 
+
+You should have 32 bytes of secret data in the key `token` in an `Opaque` secret.
 
 <details>
 <summary>Hint</summary>
-Try `kubectl get secrets` to list all secrets in the current namespace. 
+`kubectl get secrets` lists all secrets in the current namespace. 
 
-Use `kubectl describe secret <your-secret-name>` to see details of a specific secret. 
+`kubectl describe secret <your-secret-name>` prints details of a specific secret. 
 
-Use `kubectl get secret -oyaml <your-secret-name>` to see the full YAML representation of a secret.
+`kubectl get secret -oyaml <your-secret-name>` prints the full YAML representation of a secret.
 </details>
