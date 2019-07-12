@@ -24,7 +24,7 @@ metadata:
           "type": "file",
           "path": "/var/log/kubernetes/apiserver/audit.log",
           "service": "kube-apiserver-audit",
-          "source": "kubernetes"",
+          "source": "kubernetes",
           "tags": "kube-apiserver:audit"
         },
         {},{},{}
