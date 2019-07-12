@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-a-lot
+  namespace: default
+  labels:
+    app: log-a-lot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-a-lot
+  template:
+    metadata:
+      labels:
+        app: log-a-lot
+    spec:
+      containers:
+        - name: main
+          image: alpine:latest
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          command:
+          - /bin/sh
+          - -c
+          - while true; do echo "$(date): $(POD_NAME) i log a lot!"; sleep 1; done;
