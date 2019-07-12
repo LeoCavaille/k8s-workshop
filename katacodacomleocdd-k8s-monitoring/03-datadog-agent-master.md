@@ -1,6 +1,6 @@
 By now you've noticed that the agent is only running on your worker node. To schedule a replica on a master node, a `toleration` matching the `taints` on the node is required.
 
-Find the taints applied to the master node.
+* Find the taints applied to the master node.
 
 <details>
 <summary>Hint</summary>
