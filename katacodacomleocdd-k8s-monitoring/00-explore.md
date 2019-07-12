@@ -6,12 +6,12 @@ Start by verifying that your cluster is running the expected version of Kubernet
 
 <details>
 <summary>Hint</summary>
-* `kubectl version`{{copy}} prints the client and server versions.
+`kubectl version`{{copy}} prints the client and server versions.
 </details>
 
 Make sure that all the nodes in your cluster are in `Ready` state. If your nodes are `NotReady`, wait a few seconds and try again until they become `Ready`.
 
 <details>
 <summary>Hint</summary>
-* `kubectl get nodes`{{copy}} prints a list of the nodes in your cluster.
+`kubectl get nodes`{{copy}} prints a list of the nodes in your cluster.
 </details>
