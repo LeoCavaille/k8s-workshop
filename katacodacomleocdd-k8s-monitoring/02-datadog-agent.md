@@ -8,22 +8,19 @@ The workshop includes with the manifests to install the agent.  For more details
 * Install the agent in your cluster: <br/>
 `kubectl apply -f assets/02-datadog-agent`{{execute}}
 
-Verify the `DaemonsetSet` is deployed, and you have the expected replica count of 2.
-
-<details>
-<summary>Hint</summary>
-`kubectl get ds` prints a list of all DaemonSets in the current namespace. <br/> <br/>
-
-`kubectl get ds <ds-name>` prints details about a specific DaemonSet. 
-</details>
+Verify the `DaemonsetSet` is deployed, and a replica is running on your worker node `node01`.
 
 Wait for all datadog-agent pods to enter `Running` state.
 
 <details>
 <summary>Hint</summary>
+`kubectl get ds` prints a list of all DaemonSets in the current namespace. <br/> <br/>
+
+`kubectl get ds <ds-name>` prints details about a specific DaemonSet. <br/> <br/>
+
 `kubectl get pods` prints a list of all pods in the current namespace. <br/> <br/>
 
-`kubectl get pods -owide` prints a list of all pods with extra information, like the node they run on. <br/> <br/>
+`kubectl get pods -owide` prints a list of all pods with extra information, including the assigned node. <br/> <br/>
 
 `kubectl get pods -w` prints and updates a list of all pods as changes occur on the server. (Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to end the watch)
 </details>

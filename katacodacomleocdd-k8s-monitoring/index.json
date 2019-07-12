@@ -16,32 +16,32 @@
         "text": "02-datadog-agent.md"
       },
       {
+        "title": "Run the agent everywhere",
+        "text": "03-datadog-agent-everywhere.md"
+      },
+      {
         "title": "Visualize the cluster in Datadog",
-        "text": "02c-datadog-infra.md"
+        "text": "04-datadog-container-map.md"
       },
       {
         "title": "Understanding Kubernetes observability data",
-        "text": "02d-datadog-k8s-dashboard.md"
+        "text": "05-datadog-k8s-dashboard.md"
       },
       {
         "title": "Install the kube-state-metrics integration",
-        "text": "03-datadog-ksm.md"
+        "text": "06-datadog-ksm.md"
       },
       {
-        "title": "Enable logs collection to Datadog",
-        "text": "04-datadog-logs.md"
-      },
-      {
-        "title": "Look at your environment in Datadog",
-        "text": "05-env-in-datadog.md"
+        "title": "Enable Datadog log collection",
+        "text": "07-datadog-logs.md"
       },
       {
         "title": "(Optional) CoreDNS metrics analysis",
-        "text": "06-coredns-metrics.md"
+        "text": "07a-coredns-metrics.md"
       },
       {
         "title": "(Optional) CoreDNS logs setup & analysis",
-        "text": "07-coredns-logs.md"
+        "text": "07b-coredns-logs.md"
       },
       {
         "title": "Deploy sample applications",
