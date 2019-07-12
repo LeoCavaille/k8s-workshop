@@ -24,8 +24,8 @@
         "text": "02b-datadog-agent.md"
       },
       {
-        "title": "Visualize containers in Datadog",
-        "text": "02c-datadog-container-map.md"
+        "title": "Visualize the cluster in Datadog",
+        "text": "02c-datadog-infra.md"
       },
       {
         "title": "Understanding Kubernetes observability data",
