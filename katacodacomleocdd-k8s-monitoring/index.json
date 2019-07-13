@@ -52,20 +52,16 @@
         "text": "11-control-plane.md"
       },
       {
+        "title": "Instrument kube-proxy",
+        "text": "12-kube-proxy.md"
+      },
+      {
         "title": "View realtime container details in Datadog",
-        "text": "12-container-details.md"
+        "text": "13-container-details.md"
       },
       {
         "title": "Collect apiserver audit logs",
-        "text": "13-audit-logs.md"
-      },
-      {
-        "title": "(Optional) CoreDNS metrics analysis",
-        "text": "x-coredns-metrics.md"
-      },
-      {
-        "title": "(Optional) CoreDNS logs setup & analysis",
-        "text": "x-coredns-logs.md"
+        "text": "14-audit-logs.md"
       },
       {
         "title": "Deploy sample applications",

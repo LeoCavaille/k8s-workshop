@@ -58,9 +58,9 @@ Agent checks are performed by the agent running on the same node as the target. 
 
 Since it has no tolerations, KSM will always be running on the worker node, `node01`. <br/> <br/>
 
-`kubectl get po -oowide` prints information about all pods in the current namespace, including the target node. <br/> <br/>
+`kubectl get po -owide`{{copy}} prints information about all pods in the current namespace, including the target node. <br/> <br/>
 
-`kubectl exec -it <pod-name> <command>` executes a command in an interactive tty attached to the target pod.
+`kubectl exec -it <pod-name> <command>`{{copy}} executes a command in an interactive tty attached to the target pod.
 </details>
 
 The default [dashboard](https://app.datadoghq.com/screen/integration/86) should start filling in with metrics from KSM.

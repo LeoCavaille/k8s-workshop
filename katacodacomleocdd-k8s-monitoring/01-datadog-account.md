@@ -1,4 +1,4 @@
-In order to begin using Datadog, you must install the agent. The agent uses an API key to authenticate with the Datadog API; to run the agent in Kubernetes, we must make the API key available in a Kubernetes `Secret`.
+In order to begin using Datadog, you must install the agent. The agent uses an API key to authenticate with the Datadog API. 
 
 * Copy your API key from the Datadog agent configuration page and export it as an environment variable: <br/>
 `export DD_API_KEY=<your-api-key>`{{copy}}
