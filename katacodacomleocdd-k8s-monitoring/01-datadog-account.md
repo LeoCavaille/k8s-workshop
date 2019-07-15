@@ -20,4 +20,4 @@ In order to begin using Datadog, you must install the agent. The agent uses an A
 The cluster agent requires a secret token to secure communication between node agents and cluster agent workers.
 
 * Create a `Secret` with a random token for the cluster agent: <br/>
-`kubectl create secret generic datadog-auth-token --from-literal=token=$(openssl rand -hex 16)`
+`kubectl create secret generic datadog-auth-token --from-literal=token=$(openssl rand -hex 16)`{{copy}}
