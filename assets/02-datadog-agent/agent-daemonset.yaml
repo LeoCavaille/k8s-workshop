@@ -47,13 +47,6 @@ spec:
             value: "true"
           - name: KUBERNETES
             value: "true"
-          - name: DD_CLUSTER_AGENT_ENABLED
-            value: "true"
-          - name: DD_CLUSTER_AGENT_AUTH_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: datadog-auth-token
-                key: token
           - name: DD_LOG_LEVEL
             value: "error"
         resources:
