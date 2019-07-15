@@ -24,10 +24,6 @@
         "text": "04-agent-everywhere.md"
       },
       {
-        "title": "Visualize the cluster in Datadog",
-        "text": "05-container-map.md"
-      },
-      {
         "title": "Understanding Kubernetes observability data",
         "text": "06-k8s-dashboard.md"
       },
@@ -48,12 +44,16 @@
         "text": "10a-live-tail.md"
       },
       {
+        "title": "Visualize the cluster in Datadog",
+        "text": "10b-container-map.md"
+      },
+      {
         "title": "Part 1 Complete",
-        "text": "10b-end-part-1.md"
+        "text": "10c-end-part-1.md"
       },
       {
         "title": "Part 2",
-        "text": "10c-begin-part-2.md"
+        "text": "10d-begin-part-2.md"
       },
       {
         "title": "Install Datadog integrations for the Kubernetes control plane",
@@ -105,7 +105,7 @@
       },
       {
         "title": "Troubleshooting 5: Scheduling issues",
-        "text": "19-d-troubleshooting-resources.md"
+        "text": "19-e-troubleshooting-resources.md"
       },
       {
         "title": "(Optional) More application failures",
