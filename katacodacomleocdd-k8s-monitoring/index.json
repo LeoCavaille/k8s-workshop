@@ -68,12 +68,16 @@
         "text": "15-audit-logs-policies.md"
       },
       {
+        "title": "Configure Kubernetes audit logs in Datadog",
+        "text": "16-audit-logs-datadog.md"
+      },
+      {
         "title": "End of part 2",
-        "text": "16-end-part2.md"
+        "text": "17-end-part2.md"
       },
       {
         "title": "Deploy sample applications",
-        "text": "17-deploy-sample-apps.md"
+        "text": "18-deploy-sample-apps.md"
       },
       {
         "title": "Use Datadog to troubleshoot application failures",

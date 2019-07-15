@@ -1,0 +1,443 @@
+---
+# Source: redis/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis-cache
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    release: "redis-cache"
+    heritage: "Tiller"
+type: Opaque
+data:
+  redis-password: "RUhBTkwyRkRNZQ=="
+---
+# Source: redis/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    heritage: Tiller
+    release: redis-cache
+  name: redis-cache
+data:
+  redis.conf: |-
+    # User-supplied configuration:
+    # Enable AOF https://redis.io/topics/persistence#append-only-file
+    appendonly yes
+    # Disable RDB persistence, AOF persistence already enabled.
+    save ""
+  master.conf: |-
+    dir /data
+    rename-command FLUSHDB ""
+    rename-command FLUSHALL ""
+  replica.conf: |-
+    dir /data
+    slave-read-only yes
+    rename-command FLUSHDB ""
+    rename-command FLUSHALL ""
+
+---
+# Source: redis/templates/health-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    heritage: Tiller
+    release: redis-cache
+  name: redis-cache-health
+data:
+  ping_local.sh: |-
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+        -a $REDIS_PASSWORD \
+        -h localhost \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ]; then
+      echo "$response"
+      exit 1
+    fi
+  ping_master.sh: |-
+    response=$(
+      timeout -s 9 $1 \
+      redis-cli \
+        -a $REDIS_MASTER_PASSWORD \
+        -h $REDIS_MASTER_HOST \
+        -p $REDIS_MASTER_PORT_NUMBER \
+        ping
+    )
+    if [ "$response" != "PONG" ]; then
+      echo "$response"
+      exit 1
+    fi
+  ping_local_and_master.sh: |-
+    script_dir="$(dirname "$0")"
+    exit_status=0
+    "$script_dir/ping_local.sh" $1 || exit_status=$?
+    "$script_dir/ping_master.sh" $1 || exit_status=$?
+    exit $exit_status
+
+---
+# Source: redis/templates/headless-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cache-headless
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    release: "redis-cache"
+    heritage: "Tiller"
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: redis
+    port: 6379
+    targetPort: redis
+  selector:
+    app: redis
+    release: "redis-cache"
+
+---
+# Source: redis/templates/redis-master-svc.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cache-master
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    release: "redis-cache"
+    heritage: "Tiller"
+spec:
+  type: ClusterIP
+  ports:
+  - name: redis
+    port: 6379
+    targetPort: redis
+  selector:
+    app: redis
+    release: "redis-cache"
+    role: master
+
+---
+# Source: redis/templates/redis-slave-svc.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cache-slave
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    release: "redis-cache"
+    heritage: "Tiller"
+spec:
+  type: ClusterIP
+  ports:
+  - name: redis
+    port: 6379
+    targetPort: redis
+  selector:
+    app: redis
+    release: "redis-cache"
+    role: slave
+
+---
+# Source: redis/templates/redis-master-statefulset.yaml
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: redis-cache-master
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    release: "redis-cache"
+    heritage: "Tiller"
+spec:
+  selector:
+    matchLabels:
+      release: "redis-cache"
+      role: master
+      app: redis
+  serviceName: redis-cache-headless
+  template:
+    metadata:
+      labels:
+        release: "redis-cache"
+        chart: redis-8.0.4
+        role: master
+        app: redis
+      annotations:
+        checksum/health: 03477fbd0df84852d966809f4625c6782e04e3ba7761b583568ef60f37e1dd48
+        checksum/configmap: f3443e31ffdcf1ee46fa870f5f29e7c7359ac246934775dc9b1eb7f063b7f13b
+        checksum/secret: 79611c520ca146dd7466d747fc087d031c9c89c7e41d1b3625e20d88eb2888b3
+    spec:      
+      securityContext:
+        fsGroup: 1001
+      serviceAccountName: "default"
+      containers:
+      - name: redis-cache
+        image: "docker.io/bitnami/redis:5.0.5-debian-9-r14"
+        imagePullPolicy: "Always"
+        securityContext:
+          runAsUser: 1001
+        command:
+        - /bin/bash
+        - -c
+        - |
+          if [[ -n $REDIS_PASSWORD_FILE ]]; then
+            password_aux=`cat ${REDIS_PASSWORD_FILE}`
+            export REDIS_PASSWORD=$password_aux
+          fi
+          if [[ ! -f /opt/bitnami/redis/etc/master.conf ]];then
+            cp /opt/bitnami/redis/mounted-etc/master.conf /opt/bitnami/redis/etc/master.conf
+          fi
+          if [[ ! -f /opt/bitnami/redis/etc/redis.conf ]];then
+            cp /opt/bitnami/redis/mounted-etc/redis.conf /opt/bitnami/redis/etc/redis.conf
+          fi          
+          ARGS=("--port" "${REDIS_PORT}")
+          ARGS+=("--requirepass" "${REDIS_PASSWORD}")
+          ARGS+=("--include" "/opt/bitnami/redis/etc/redis.conf")
+          ARGS+=("--include" "/opt/bitnami/redis/etc/master.conf")
+          /run.sh ${ARGS[@]}
+        env:
+        - name: REDIS_REPLICATION_MODE
+          value: master
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-cache
+              key: redis-password
+        - name: REDIS_PORT
+          value: "6379"
+        ports:
+        - name: redis
+          containerPort: 6379
+        livenessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_local.sh 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_local.sh 5
+        resources:
+          null
+          
+        volumeMounts:
+        - name: health
+          mountPath: /health
+        - name: redis-data
+          mountPath: /data
+          subPath: 
+        - name: config
+          mountPath: /opt/bitnami/redis/mounted-etc
+        - name: redis-tmp-conf
+          mountPath: /opt/bitnami/redis/etc/
+      volumes:
+      - name: health
+        configMap:
+          name: redis-cache-health
+          defaultMode: 0755
+      - name: config
+        configMap:
+          name: redis-cache
+      - name: "redis-data"
+        emptyDir: {}
+      - name: redis-tmp-conf
+        emptyDir: {}
+  updateStrategy:
+    type: RollingUpdate
+
+---
+# Source: redis/templates/redis-slave-statefulset.yaml
+
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: redis-cache-slave
+  labels:
+    app: redis
+    chart: redis-8.0.4
+    release: "redis-cache"
+    heritage: "Tiller"
+spec:
+  replicas: 4
+  serviceName: redis-cache-headless
+  selector:
+    matchLabels:
+        release: "redis-cache"
+        role: slave
+        app: redis
+  template:
+    metadata:
+      labels:
+        release: "redis-cache"
+        chart: redis-8.0.4
+        role: slave
+        app: redis
+      annotations:
+        checksum/health: 03477fbd0df84852d966809f4625c6782e04e3ba7761b583568ef60f37e1dd48
+        checksum/configmap: f3443e31ffdcf1ee46fa870f5f29e7c7359ac246934775dc9b1eb7f063b7f13b
+        checksum/secret: 7e47e7c81bd24eecefe87454c97ab870b3484668e114e6ae506bc33140c26b6c
+    spec:      
+      securityContext:
+        fsGroup: 1001
+      serviceAccountName: "default"
+      containers:
+      - name: redis-cache
+        image: docker.io/bitnami/redis:5.0.5-debian-9-r14
+        imagePullPolicy: "Always"
+        securityContext:
+          runAsUser: 1001
+        command:
+        - /bin/bash
+        - -c
+        - |
+          if [[ -n $REDIS_PASSWORD_FILE ]]; then
+            password_aux=`cat ${REDIS_PASSWORD_FILE}`
+            export REDIS_PASSWORD=$password_aux
+          fi
+          if [[ -n $REDIS_MASTER_PASSWORD_FILE ]]; then
+            password_aux=`cat ${REDIS_MASTER_PASSWORD_FILE}`
+            export REDIS_MASTER_PASSWORD=$password_aux
+          fi
+          if [[ ! -f /opt/bitnami/redis/etc/replica.conf ]];then
+            cp /opt/bitnami/redis/mounted-etc/replica.conf /opt/bitnami/redis/etc/replica.conf
+          fi
+          if [[ ! -f /opt/bitnami/redis/etc/redis.conf ]];then
+            cp /opt/bitnami/redis/mounted-etc/redis.conf /opt/bitnami/redis/etc/redis.conf
+          fi          
+          ARGS=("--port" "${REDIS_PORT}")
+          ARGS+=("--slaveof" "${REDIS_MASTER_HOST}" "${REDIS_MASTER_PORT_NUMBER}")
+          ARGS+=("--requirepass" "${REDIS_PASSWORD}")
+          ARGS+=("--masterauth" "${REDIS_MASTER_PASSWORD}")
+          ARGS+=("--include" "/opt/bitnami/redis/etc/redis.conf")
+          ARGS+=("--include" "/opt/bitnami/redis/etc/replica.conf")
+          /run.sh "${ARGS[@]}"
+        env:
+        - name: REDIS_REPLICATION_MODE
+          value: slave
+        - name: REDIS_MASTER_HOST
+          value: redis-cache-master-0.redis-cache-headless.default.svc.cluster.local
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_MASTER_PORT_NUMBER
+          value: "6379"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-cache
+              key: redis-password
+        - name: REDIS_MASTER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-cache
+              key: redis-password
+        ports:
+        - name: redis
+          containerPort: 6379
+        livenessProbe:
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_local_and_master.sh 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 10
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_local_and_master.sh 5
+        resources:
+          null
+          
+        volumeMounts:
+        - name: health
+          mountPath: /health
+        - name: redis-data
+          mountPath: /data
+        - name: config
+          mountPath: /opt/bitnami/redis/mounted-etc
+        - name: redis-tmp-conf
+          mountPath: /opt/bitnami/redis/etc
+      volumes:
+      - name: health
+        configMap:
+          name: redis-cache-health
+          defaultMode: 0755
+      - name: config
+        configMap:
+          name: redis-cache
+      - name: sentinel-tmp-conf
+        emptyDir: {}
+      - name: redis-tmp-conf
+        emptyDir: {}
+      - name: redis-data
+        emptyDir: {}
+  updateStrategy:
+    type: RollingUpdate
+
+---
+# Source: redis/templates/metrics-deployment.yaml
+
+
+---
+# Source: redis/templates/metrics-prometheus.yaml
+
+---
+# Source: redis/templates/metrics-svc.yaml
+
+
+---
+# Source: redis/templates/networkpolicy.yaml
+
+
+---
+# Source: redis/templates/redis-role.yaml
+
+---
+# Source: redis/templates/redis-rolebinding.yaml
+
+---
+# Source: redis/templates/redis-serviceaccount.yaml
+
+---
+# Source: redis/templates/redis-with-sentinel-svc.yaml
+
+
