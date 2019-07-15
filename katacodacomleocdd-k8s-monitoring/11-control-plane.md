@@ -23,7 +23,7 @@ The configuration in `assets/11-control-plane/static-pods-discovery.yaml` drives
 </details>
 
 * Deploy the control plane checks:
-`kubectl apply -f assets/11-control-plane`{{execute}}
+`kubectl apply -f assets/11-control-plane/static-pods-discovery.yaml`{{execute}}
 
 * Verify that the checks are running for `etcd`, `kube_apiserver`, `kube_scheduler`, and `kube_controller_manager`.
 
@@ -36,5 +36,23 @@ To verify a check is running, exec into the agent on the host and verify it's co
 `agent status` in the agent pod prints information about the metrics and logs the agent has collected.
 </details>
 
-#TODO links to default dashboards
-Each control plane integration comes with a default dashboard: [etcd](), [kube-apiserver](), [kube-scheduler](), and [kube-controller-manager]().
+
+#TODO activate the kube apiserver metrics dash.
+
+Each control plane integration comes with a default dashboard: [etcd](https://app.datadoghq.com/screen/integration/75/etcd---overview), [kube-apiserver](), [kube-scheduler](https://app.datadoghq.com/screen/integration/30270/kubernetes-scheduler), and [kube-controller-manager](https://app.datadoghq.com/screen/integration/30271/kubernetes-controller-manager).
+
+As an example for how to create custom dashboards in Datadaog, we are going to create an overview of the whole control plane using the [Datadog API]()
+
+* Create an APP key in your [Datadog account](https://app.datadoghq.com/account/settings#api).
+# TODO add image from ../assets/img/dashboard.png.
+
+* Run the following API call using the JSON description of the dashboard located in ../assets/11-control-plane/control_plane_json.json
+
+```
+export app_key=<YOUR_APP_KEY>
+
+curl  -X POST -H "Content-type: application/json" \
+-d @../assets/11-control-plane/control_plane_json.json \
+"https://api.datadoghq.com/api/v1/dashboard?api_key=${DD_API_KEY}&application_key=${app_key}"
+```
+
