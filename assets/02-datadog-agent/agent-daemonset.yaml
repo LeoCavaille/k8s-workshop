@@ -45,7 +45,7 @@ spec:
                 fieldPath: status.hostIP
           - name: DD_APM_ENABLED
             value: "true"
-          - name: KUBERNETES_COLLECT_METADATA_TAGS
+          - name: DD_KUBERNETES_COLLECT_METADATA_TAGS
             value: "false"
           - name: KUBERNETES
             value: "true"
