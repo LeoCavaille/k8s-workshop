@@ -32,7 +32,7 @@
         "text": "06-k8s-dashboard.md"
       },
       {
-        "title": "Integration: `kube-state-metrics`",
+        "title": "Integration: kube-state-metrics",
         "text": "07-ksm.md"
       },
       {
@@ -68,7 +68,7 @@
         "text": "11-control-plane.md"
       },
       {
-        "title": "Integration: `kube-proxy`",
+        "title": "Integration: kube-proxy",
         "text": "12-kube-proxy.md"
       },
       {
