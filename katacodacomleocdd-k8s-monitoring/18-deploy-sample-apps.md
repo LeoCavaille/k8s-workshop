@@ -3,11 +3,12 @@ Kubernetes we included some sample applications to deploy in your cluster.
 
 * Apply the various manifests and start getting some more pods running in the
   cluster:
-`kubectl apply -f assets/18-deploy-sample-apps`{{execute}}
+`kubectl apply -f assets/apps/manifests/{{execute}}
 
 The sample apps include:
 
-* a dummy web server called `hello-web` with a bunch of serving replicas
+* a dummy web server called `hello-web` with a bunch of serving replicas and
+  several versions of the container
 * a redis cache deployment cluster with one master and several slaves
 * some custom made Go applications for the workshop
 

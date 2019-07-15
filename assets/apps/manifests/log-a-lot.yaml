@@ -26,4 +26,4 @@ spec:
           command:
           - /bin/sh
           - -c
-          - while true; do echo "$(date): $(POD_NAME) i log a lot!"; sleep 1; done;
+          - "while true; do echo \"$(date): $(POD_NAME) i log a lot!\"; sleep 1; done;"
