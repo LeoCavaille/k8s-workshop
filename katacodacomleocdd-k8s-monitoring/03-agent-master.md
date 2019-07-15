@@ -1,4 +1,4 @@
-By now you've noticed that the agent is only running on the worker node. To schedule a replica on a master node, a `toleration` matching the `taints` on the node is required.
+With the default configuration, the agent is only running on worker nodes. The master node has a taint applied preventing the `DaemonSet` from targeting it. To schedule a replica on a master node, a `toleration` matching the `taint` is required.
 
 * Find the taints applied to the master node.
 
