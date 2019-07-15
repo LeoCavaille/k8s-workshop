@@ -1,6 +1,6 @@
 With data flowing into Datadog, you can now see your hosts and containers in real time!
 
-The [Container Map](https://app.datadoghq.com/infrastructure/map?node_type=container) shows a visualization of running containers. Containers can be filtered and grouped by any tag.
+The [Container Map](https://app.datadoghq.com/infrastructure/map?node_type=container&groupby=none) shows a visualization of running containers. Containers can be filtered and grouped by any tag.
 
 Try creating some useful vizualizations on the container map:
 
