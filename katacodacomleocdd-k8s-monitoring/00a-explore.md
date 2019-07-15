@@ -15,3 +15,6 @@ Make sure that all the nodes in your cluster are in `Ready` state. If your nodes
 <summary>Hint</summary>
 `kubectl get nodes`{{copy}} prints a list of the nodes in your cluster.
 </details>
+
+Run this script to configure your cluster
+`assets/00-env-prep/cluster_setup.sh`{{execute}}
