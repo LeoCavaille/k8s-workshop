@@ -1,6 +1,6 @@
 As you can see the widgets of the state of your kubernetes resources (DaemonSets, Deployments, ReplicaSets, Containers) are empty.
 
-This data is provided by [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics). Also known as KSM, `kube-state-metrics` is service that watches the Kubernetes API and generates metrics about the state of objects.
+This data is provided by [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics). Also known as KSM, `kube-state-metrics` is a service that watches the Kubernetes API and generates metrics about the state of objects.
 
 <details>
 <summary>Additional Information</summary>
@@ -19,7 +19,7 @@ The agent will automatically discover KSM and collect metrics from it's OpenMetr
 The `-n` flag to `kubectl` change the namespace of your query.
 </details>
 
-A dedicated service account for KSM is granted permission to access the Kubernetes API. With RBAC enabled, the manifests include a `ClusterRole` and `ClusterRoleBinding` to grant permissons.
+A dedicated service account for KSM is granting permissions to access the Kubernetes API. With RBAC enabled, the manifests include a `ClusterRole` and `ClusterRoleBinding` to grant permissons.
 
 * Find the `ClusterRole` that allows KSM to access the Kubernetes API.
 <details>

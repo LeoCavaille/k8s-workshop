@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-audit-logs
+data:
+  kube_audit.yaml: |
+    logs:
+    - type: file
+      path: /var/log/kubernetes/apiserver/audit.log
+      service: kube-apiserver-audit
+      source: kubernetes.audit

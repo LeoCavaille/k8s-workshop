@@ -60,12 +60,16 @@
         "text": "13-container-details.md"
       },
       {
+        "title": "Collect Kubernetes apiserver audit logs",
+        "text": "14-audit-logs.md"
+      },
+      {
         "title": "End of part 2",
         "text": "14-end-part2.md"
       },
       {
         "title": "Deploy sample applications",
-        "text": "x-deploy-sample-apps.md"
+        "text": "15-deploy-sample-apps.md"
       },
       {
         "title": "Use Datadog to troubleshoot application failures",
