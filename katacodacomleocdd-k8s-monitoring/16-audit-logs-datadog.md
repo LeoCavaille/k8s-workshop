@@ -40,25 +40,27 @@ Finally, create the duration attribute, using an Arithmetic processor. The formu
 4 - Facets
 Now that we have remapped the fields we were interested in we are going to create facets on some fields to make them searchable and give them units (when it applies).
 
-Create facets in group `Web Access` for the following attributes:
-- method
-- status_code
-- url_details.path
+Create facets in group `Web Access` for the method attribute:
 
 ![Create method facet](https://raw.githubusercontent.com/LeoCavaille/k8s-workshop/master/assets/img/audit-logs-method-facet.png)
+
+Do the same for these two attributes
+- status_code
+- url_details.path
 
 Create "measure" for duration and set the unit to nanoseconds.
 
 ![Duration measure](https://raw.githubusercontent.com/LeoCavaille/k8s-workshop/master/assets/img/audit-logs-duration-measure.png)
 
-Finally create Kubernetes facets in group K8s Audit
-- `objectRef.name`{{copy}}
+Create a Kubernetes facet in group K8s Audit for `objectRef.name`{{copy}}.
+
+![Object name facet](https://raw.githubusercontent.com/LeoCavaille/k8s-workshop/master/assets/img/audit-logs-name-facet.png)
+
+Do the same for the following attributes:
 - `objectRef.namespace`{{copy}}
 - `objectRef.resource`{{copy}}
 - `user.username`{{copy}}
 - `user.group`{{copy}}
-
-![Object name facet](https://raw.githubusercontent.com/LeoCavaille/k8s-workshop/master/assets/img/audit-logs-name-facet.png)
 
 5 - Now that audit logs are parsed, look at them again
 Here is a few examples of things you can look at logs Analytics:
