@@ -126,10 +126,6 @@
       {
         "title": "Troubleshooting 7: Identifying an apiserver spammer",
         "text": "19-g-troubleshooting-apiserver-spam.md"
-      },
-      {
-        "title": "Troubleshooting 8: Identifying a DNS spammer",
-        "text": "19-h-troubleshooting-apiserver-dns.md"
       }
     ],
     "intro": {
