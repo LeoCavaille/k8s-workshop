@@ -65,7 +65,7 @@
       },
       {
         "title": "Configure Kubernetes audit log policy",
-        "text": "15-audit-log-policies.md"
+        "text": "15-audit-logs-policies.md"
       },
       {
         "title": "End of part 2",
