@@ -67,6 +67,8 @@ spec:
           - name: cgroups
             mountPath: /host/sys/fs/cgroup
             readOnly: true
+          - mountPath: /keys
+            name: etcd-certs            
         livenessProbe:
           exec:
             command:
@@ -90,3 +92,6 @@ spec:
         - hostPath:
             path: /sys/fs/cgroup
           name: cgroups
+        - hostPath:
+            path: /etc/kubernetes/pki/etcd
+          name: etcd-certs           
