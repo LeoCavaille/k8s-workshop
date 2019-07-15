@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-web-v2
+  namespace: default
+  labels:
+    app: hello-web-v2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: hello-web-v2
+  template:
+    metadata:
+      labels:
+        app: hello-web-v2
+    spec:
+      containers:
+        - name: web
+          image: gcr.io/google-samples/hello-app:2.0
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-web-v2
+  namespace: default
+spec:
+  ports:
+  - name: hello-web-v2
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: hello-web-v2

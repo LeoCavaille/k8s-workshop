@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: espresso
+  labels:
+    app: espresso
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: espresso
+  template:
+    metadata:
+      labels:
+        app: espresso
+    spec:
+      containers:
+      - name: espresso
+        image: k8s.gcr.io/pause:3.1-oops-i-did-a-typo-in-the-image-version
