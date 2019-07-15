@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-probes
+  namespace: default
+  labels:
+    app: pod-probes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-probes
+  template:
+    metadata:
+      labels:
+        app: pod-probes
+    spec:
+      containers:
+      - name: pod-probes
+        image: roboll/sample-pod-probes:v1
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
