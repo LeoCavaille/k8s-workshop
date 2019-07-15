@@ -17,3 +17,7 @@ rules:
   - endpoints
   verbs:
   - get
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
