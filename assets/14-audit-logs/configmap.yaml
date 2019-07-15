@@ -9,4 +9,3 @@ data:
       path: /var/log/kubernetes/apiserver/audit.log
       service: kube-apiserver-audit
       source: kubernetes.audit
-      tags: kube-apiserver:audit
