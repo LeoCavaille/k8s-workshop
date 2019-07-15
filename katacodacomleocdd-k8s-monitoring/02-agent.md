@@ -8,7 +8,9 @@ The workshop includes with the manifests to install the agent.  For more details
 * Install the agent in your cluster: <br/>
 `kubectl apply -f assets/02-datadog-agent`{{copy}}
 
-* Verify the `DaemonsetSet` is deployed, and a replica is running on your worker node `node01`. Wait for all datadog-agent pods to enter `Running` state.
+* Verify the `DaemonsetSet` is deployed, and a replica is running on your worker node `node01`.
+
+* Wait for all datadog-agent pods to enter `Running` state.
 
 <details>
 <summary>Hint</summary>
