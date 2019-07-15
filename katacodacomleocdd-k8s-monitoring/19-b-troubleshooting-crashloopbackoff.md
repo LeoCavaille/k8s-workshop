@@ -24,13 +24,13 @@ Pods logs are also visible using `kubectl logs`.
 Add to your [notebook](https://app.datadoghq.com/notebook) a graph that
 represents the number of pods in `CrashLoopBackoff` state.
 
-Here are the available metrics reported from the [kubernetes state metrics
+Here are the available metrics reported from the [kubernetes 
 integration](https://docs.datadoghq.com/integrations/kubernetes/#kubernetes-state)
 we installed earlier.
 
 <details>
 <summary>Hints</summary>
-`kubernetes_state.container.status_report.count.waiting` is giving you the count of the containers currently reporting a in waiting state with the `reason` as a tag.
+`kubernetes.containers.state.waiting` is giving you the count of the containers currently reporting a in waiting state with the `reason` as a tag.
 </details>
 
 ## Your mission: fix the problem
@@ -46,11 +46,15 @@ As a reminder, all of the manifests for the applications in this section are in
 This pod failed to run because the command in the container it ran exited with a
 non-zero status code.<br/><br/> 
 
-A metric query that identifies this issue is to look at pods in error `kubernetes_state.container.status_report.count.waiting` filtered on `reason:crashloopbackoff`<br/><br/> 
+A metric query that identifies this issue is to look at pods in error
+`kubernetes.containers.state.waiting` filtered on `reason:crashloopbackoff` and grouped by `kube_deployment`<br/><br/> 
 
 In this case the command in the deployment is:
 `/bin/false` <br/><br/>
 
 So if you just change the manifest to use a command that would not return a
-non-zero exit code and re-apply the manifest you should be on your way!
+non-zero exit code and re-apply the manifest you should be on your
+way!<br/><br/>
+
+We included a sample patch as a solution `cat assets/apps/fixes/macchiato-fix.yaml`
 </details>

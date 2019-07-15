@@ -37,7 +37,7 @@ The pod is failing liveness checks.<br/><br/>
 
 The application requires a header `X-Should-Pass-Liveness: true` to pass liveness checks.<br/><br/>
 
-The probe definition allows setting a custom HTTP header:
+The probe definition allows setting a custom HTTP header:<br/>
 ```
         livenessProbe:
           httpGet:
@@ -48,5 +48,7 @@ The probe definition allows setting a custom HTTP header:
                 value: true
 ```
 
-Use `kubectl edit` to add the `httpHeaders` to your liveness check.
+Use `kubectl edit` to add the `httpHeaders` to your liveness check.<br/><br/>
+
+We included a sample patch as a solution `cat assets/apps/fixes/pod-probes-liveness-fix.yaml`.
 </details>

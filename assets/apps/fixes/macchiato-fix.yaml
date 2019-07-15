@@ -1,0 +1,9 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: alpine
+          command:
+            - /bin/sh
+            - -c
+            - "sleep infinity"

@@ -13,7 +13,7 @@ The pod list has a `STATUS` column telling you in which state the pod is.
 ## Your mission: monitor it in Datadog
 
 Add to your [notebook](https://app.datadoghq.com/notebook) a graph that
-represents the number of pods in `ImagePullBackoff` state.
+represents the number of pods pending to be scheduled.
 
 Here are the available metrics reported from the [kubernetes state metrics
 integration](https://docs.datadoghq.com/integrations/kubernetes/#kubernetes-state)
@@ -43,5 +43,7 @@ In this case the image is:
 `k8s.gcr.io/pause:3.1-oops-i-did-a-typo-in-the-image-version` <br/><br/>
 
 So if you just change the manifest to use something that exists and re-apply the
-manifest you should be on your way!
+manifest you should be on your way!<br/><br/>
+
+We included a sample patch as a solution `cat assets/apps/fixes/espresso-fix.yaml`
 </details>
