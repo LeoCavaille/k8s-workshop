@@ -41,7 +41,7 @@ To verify a check is running, exec into the agent on the host and verify it's co
 
 Each control plane integration comes with a default dashboard: [etcd](https://app.datadoghq.com/screen/integration/75/etcd), [kube-apiserver](), [kube-scheduler](https://app.datadoghq.com/screen/integration/30270/kubernetes-scheduler), and [kube-controller-manager](https://app.datadoghq.com/screen/integration/30271/kubernetes-controller-manager).
 
-As an example for how to create custom dashboards in Datadaog, we are going to create an overview of the whole control plane using the [Datadog API]()
+As an example for how to create custom dashboards in Datadog, we are going to create an overview of the whole control plane using the [Datadog API](https://docs.datadoghq.com/api/)
 
 * Create an APP key in your [Datadog account](https://app.datadoghq.com/account/settings#api).
 # TODO add image from ../assets/img/dashboard.png.
