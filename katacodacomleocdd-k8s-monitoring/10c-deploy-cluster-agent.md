@@ -9,7 +9,7 @@ Now is time to deploy the Cluster Agent.
 
 * Verify that the Cluster Agent is running:
 
-`kubectl get pod -lapp=datadog-cluster-agent` 
+`kubectl get pod -lapp=datadog-cluster-agent`{{copy}} 
 
 * Verify that the agent can properly communicate with it. Exec into an agent and use the `agent status` command.
 
