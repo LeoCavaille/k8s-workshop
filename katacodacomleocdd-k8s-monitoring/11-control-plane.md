@@ -49,5 +49,7 @@ As an example for how to create custom dashboards in Datadog, we are going to cr
 `export DD_APP_KEY=<YOUR_APP_KEY>`
 
 `curl -s -o /dev/null -X POST -H "Content-type: application/json" \
--d @../assets/11-control-plane/control_plane_json.json \
+-d @assets/11-control-plane/control_plane_json.json \
 "https://api.datadoghq.com/api/v1/dashboard?api_key=${DD_API_KEY}&application_key=${DD_APP_KEY}"`{{copy}}
+
+Go check out your unified dashboard in the [Dashboard list](https://app.datadoghq.com/dashboard/lists?q=Kubernetes+Control+Plane)
