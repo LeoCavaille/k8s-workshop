@@ -1,7 +1,7 @@
 The Kubernetes control plane integrations provide metrics tailored to the performance of each component.
 
 The control plane has several components that run in the `kube-system` namespace:
-`kubectl get pods -n kube-system -o custom-columns=NAME:.metadata.name,NODE:spec.nodeName`{{execute}}
+`kubectl get pods -n kube-system -o custom-columns=NAME:.metadata.name,NODE:spec.nodeName`{{copy}}
 
 ```
 NAME                             NODE
@@ -23,7 +23,7 @@ The configuration in `assets/11-control-plane/static-pods-discovery.yaml` drives
 </details>
 
 * Deploy the control plane checks:
-`kubectl apply -f assets/11-control-plane/static-pods-discovery.yaml`{{execute}}
+`kubectl apply -f assets/11-control-plane/static-pods-discovery.yaml`{{copy}}
 
 * Verify that the checks are running for `etcd`, `kube_apiserver`, `kube_scheduler`, and `kube_controller_manager`.
 
@@ -53,5 +53,5 @@ As an example for how to create custom dashboards in Datadog, we are going to cr
 
 `curl -s -o /dev/null -X POST -H "Content-type: application/json" \
 -d @../assets/11-control-plane/control_plane_json.json \
-"https://api.datadoghq.com/api/v1/dashboard?api_key=${DD_API_KEY}&application_key=${DD_APP_KEY}"`{{execute}}
+"https://api.datadoghq.com/api/v1/dashboard?api_key=${DD_API_KEY}&application_key=${DD_APP_KEY}"`{{copy}}
 

@@ -1,7 +1,7 @@
 ## Setup
 
 * Deploy the probes service: 
-`kubectl apply -f assets/apps/sample-pod-probes/service.yaml`{{execute}}
+`kubectl apply -f assets/apps/sample-pod-probes/service.yaml`{{copy}}
 
 ## What's broken
 

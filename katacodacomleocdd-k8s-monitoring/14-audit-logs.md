@@ -4,7 +4,7 @@ audit log line describing the request.
 In this environment, the apiserver is configured to send the audit logs to
 `/var/log/kubernetes/apiserver/audit.log`, go ahead and have a look at one
 request log.
-`tail -n1 /var/log/kubernetes/apiserver/audit.log | jq .`{{execute}}
+`tail -n1 /var/log/kubernetes/apiserver/audit.log | jq .`{{copy}}
 
 <details>
 <summary>Additional Information</summary>
@@ -30,14 +30,14 @@ manifest, reach out if you are blocked.*
 
 * To configure the logs agent to tail these logs, we will add a configuration
   file to our agent deployment by utilizing a [Kubernetes configmap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/):
-`kubectl apply -f assets/14-audit-logs/configmap.yaml`{{execute}}
+`kubectl apply -f assets/14-audit-logs/configmap.yaml`{{copy}}
 
 * You can look at its content by running:
-`kubectl get configmap -oyaml agent-audit-logs`{{execute}}
+`kubectl get configmap -oyaml agent-audit-logs`{{copy}}
 
 * We included a patch for the agent daemonset to deploy this new configmap and
   configure the agent:
-`cat assets/14-audit-logs/patch-daemonset-audit-logs.yaml`{{execute}}
+`cat assets/14-audit-logs/patch-daemonset-audit-logs.yaml`{{copy}}
 
 * Apply the patch: <br/>
 `kubectl patch daemonset datadog-agent --patch "$(cat assets/14-audit-logs/patch-daemonset-audit-logs.yaml)"`{{copy}}

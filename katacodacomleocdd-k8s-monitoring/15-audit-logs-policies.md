@@ -2,7 +2,7 @@ Kubernetes uses a [special manifest](https://kubernetes.io/docs/tasks/debug-appl
 log file.
 
 * Look at the policy currently in use in the environment:
-`cat /etc/kubernetes/audit-policies/policy.yaml`{{execute}}
+`cat /etc/kubernetes/audit-policies/policy.yaml`{{copy}}
 
 Now that we collected and configured properly Kubernetes audit logs, let's setup
 Datadog to analyze these logs in the next step.

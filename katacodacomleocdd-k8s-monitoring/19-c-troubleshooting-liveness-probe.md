@@ -1,7 +1,7 @@
 ## Setup
 
 * Deploy the probes sample application: 
-`kubectl apply -f assets/apps/sample-pod-probes/deployment.yaml`{{execute}}
+`kubectl apply -f assets/apps/sample-pod-probes/deployment.yaml`{{copy}}
 
 ## What's broken
 

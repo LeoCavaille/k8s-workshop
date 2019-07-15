@@ -25,4 +25,4 @@ To demonstrate live tail sampling and streaming, let's increase the replica coun
 
 * Before moving to the next step, let's scale back this sample app to zero to
   get a clean environment again:
-`kubectl scale deployment log-a-lot --replicas 1`{{execute}}
+`kubectl scale deployment log-a-lot --replicas 1`{{copy}}

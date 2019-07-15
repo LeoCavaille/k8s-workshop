@@ -3,7 +3,7 @@ Kubernetes we included some sample applications to deploy in your cluster.
 
 * Apply the various manifests and start getting some more pods running in the
   cluster:
-`kubectl apply -f assets/apps/manifests/`{{execute}}
+`kubectl apply -f assets/apps/manifests/`{{copy}}
 
 The sample apps include:
 
