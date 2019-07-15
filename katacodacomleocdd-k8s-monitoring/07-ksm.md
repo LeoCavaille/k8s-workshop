@@ -10,7 +10,7 @@ You can find the official Datadog documentation [here](https://docs.datadoghq.co
 The agent will automatically discover KSM and collect metrics from it's OpenMetrics endpoint.
 
 * Install `ksm` on your cluster: <br/>
-`kubectl apply -f assets/07-datadog-ksm`{{copy}}
+`kubectl apply -f assets/07-datadog-ksm`{{execute}}
 
 * Validate that `ksm` pods are running in the `kube-system` namespace.
 

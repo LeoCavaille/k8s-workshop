@@ -25,6 +25,6 @@ Go see your [container map](https://app.datadoghq.com/infrastructure/map?fillby=
 `kubectl get statefulsets` or `kubectl get sts` prints a list of all the statefulsets in the current
 namespace. <br/> <br/>
 
-*Answer: redis is statefulset and by definition pods with a higher ordinal can
+*Answer: redis is a statefulset and by definition pods with a higher ordinal can
 only be deployed if all the pods with lower ordinals are marked as `Ready`.*
 </details>
