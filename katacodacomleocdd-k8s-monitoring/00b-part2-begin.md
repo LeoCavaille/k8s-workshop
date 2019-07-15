@@ -1,1 +1,1 @@
-Part 2: Install Datadog in Kubernetes
+Continue to begin Part 2.
