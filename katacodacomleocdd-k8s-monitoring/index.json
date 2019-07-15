@@ -5,7 +5,11 @@
     "steps": [
       {
         "title": "Explore the environment",
-        "text": "00-explore.md"
+        "text": "00a-explore.md"
+      },
+      {
+        "title": "Part 2: Install Datadog in Kubernetes",
+        "text": "00b-part2-begin.md"
       },
       {
         "title": "Datadog account setup",
@@ -28,11 +32,11 @@
         "text": "06-k8s-dashboard.md"
       },
       {
-        "title": "Install the kube-state-metrics integration",
+        "title": "Integration: `kube-state-metrics`",
         "text": "07-ksm.md"
       },
       {
-        "title": "Enable Datadog log collection",
+        "title": "Integration: Logs",
         "text": "08-logs.md"
       },
       {
@@ -40,7 +44,7 @@
         "text": "09-agent-rollout.md"
       },
       {
-        "title": "View logs in live tail",
+        "title": "Real time logs in live tail",
         "text": "10a-live-tail.md"
       },
       {
@@ -48,27 +52,27 @@
         "text": "10b-container-map.md"
       },
       {
-        "title": "Deploying the Cluster Agent",
+        "title": "Deploy the Cluster Agent",
         "text": "10c-deploy-cluster-agent.md"
       },
       {
-        "title": "Part 1 Complete",
-        "text": "10d-end-part-1.md"
+        "title": "Part 2: Complete",
+        "text": "10d-part2-end.md"
       },
       {
-        "title": "Part 2",
-        "text": "10e-begin-part-2.md"
+        "title": "Part 3: Instrument Kubernetes",
+        "text": "10e-part3-begin.md"
       },
       {
-        "title": "Install Datadog integrations for the Kubernetes control plane",
+        "title": "Integration: Kubernetes control plane",
         "text": "11-control-plane.md"
       },
       {
-        "title": "Instrument kube-proxy",
+        "title": "Integration: `kube-proxy`",
         "text": "12-kube-proxy.md"
       },
       {
-        "title": "View realtime container details in Datadog",
+        "title": "View containers in real time from Datadog",
         "text": "13-container-details.md"
       },
       {
@@ -84,8 +88,12 @@
         "text": "16-audit-logs-datadog.md"
       },
       {
-        "title": "End of part 2",
-        "text": "17-end-part2.md"
+        "title": "Part 3: Complete",
+        "text": "17a-part3-end.md"
+      },
+      {
+        "title": "Part 4: Diagnosis and Troubleshooting",
+        "text": "17b-part4-begin.md"
       },
       {
         "title": "Deploy sample applications",
