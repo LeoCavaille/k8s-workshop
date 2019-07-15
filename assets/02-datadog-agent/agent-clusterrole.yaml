@@ -11,3 +11,9 @@ rules:
   - nodes/proxy
   verbs:
   - get
+- apiGroups:  # leader election check
+  - ""
+  resources:
+  - endpoints
+  verbs:
+  - get
