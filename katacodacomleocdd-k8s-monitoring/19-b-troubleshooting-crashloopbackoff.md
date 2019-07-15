@@ -56,5 +56,6 @@ So if you just change the manifest to use a command that would not return a
 non-zero exit code and re-apply the manifest you should be on your
 way!<br/><br/>
 
-We included a sample patch as a solution `cat assets/apps/fixes/macchiato-fix.yaml`
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch deployment macchiato --patch="$(cat assets/apps/fixes/macchiato-fix.yaml)"`
 </details>

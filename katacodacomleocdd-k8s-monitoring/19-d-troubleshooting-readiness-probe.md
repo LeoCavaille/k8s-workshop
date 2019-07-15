@@ -59,6 +59,9 @@ The probe definition allows setting a custom HTTP header:
 Use `kubectl edit` to add the `httpHeaders` to your liveness check.
 
 Verify that there are healthy endpoints for your service. <br/> <br/>
+
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch deployment pod-probes --patch="$(cat assets/apps/fixes/pod-probes-readiness-fix.yaml)"`
 </details>
 
 The service should respond to `curl http://<my-service-ip>/whoami` after you fix it.

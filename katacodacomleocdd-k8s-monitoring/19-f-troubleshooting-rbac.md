@@ -33,5 +33,6 @@ service account permissions are.<br/><br/>
 In this case you will need to add permissions for the `list` verb to the `/pods`
 resource.<br/><br/>
 
-We included a sample patch as a solution `cat assets/apps/fixes/rbac-fix.yaml`.
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch clusterroles pod-lister --patch="$(cat assets/apps/fixes/rbac-fix.yaml)"`
 </details>

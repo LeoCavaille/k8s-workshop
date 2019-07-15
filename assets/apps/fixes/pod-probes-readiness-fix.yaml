@@ -1,0 +1,10 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: pod-probes
+          readinessProbe:
+            httpGet:
+              httpHeaders:
+                - name: X-Should-Pass-Readiness
+                  value: true

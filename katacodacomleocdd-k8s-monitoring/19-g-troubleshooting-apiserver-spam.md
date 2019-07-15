@@ -34,5 +34,8 @@ pods all the time.<br/><br/>
 
 In the source code this behavior is toggled by an env variable `USE_WATCH`, so
 try to patch that in your `pod-lister` deployment and watch for the difference
-in throughput to the apiserver.
+in throughput to the apiserver.<br/><br/>
+
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch deployment pod-lister --patch="$(cat assets/apps/fixes/pod-lister-fix.yaml)"`
 </details>
