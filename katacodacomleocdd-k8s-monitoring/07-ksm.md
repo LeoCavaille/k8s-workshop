@@ -35,6 +35,17 @@ A dedicated service account for KSM is granting permissions to access the Kubern
 * Verify that the agent is collecting KSM metrics by running the following command in a datadog-agent pod:
 `agent status`{{copy}}
 
+<details>
+<summary>Hint</summary>
+Agent checks are performed by the agent running on the same node as the target. <br/> <br/>
+
+Since it has no tolerations, KSM will always be running on the worker node, `node01`. <br/> <br/>
+
+`kubectl get po -owide`{{copy}} prints information about all pods in the current namespace, including the target node. <br/> <br/>
+
+`kubectl exec -it <pod-name> <command>`{{copy}} executes a command in an interactive tty attached to the target pod.
+</details>
+
 Look for:
 ```
 =========
@@ -51,17 +62,6 @@ Collector
       Service Checks: Last Run: 1, Total: 10
       Average Execution Time : 1.102s
 ```
-
-<details>
-<summary>Hint</summary>
-Agent checks are performed by the agent running on the same node as the target. <br/> <br/>
-
-Since it has no tolerations, KSM will always be running on the worker node, `node01`. <br/> <br/>
-
-`kubectl get po -owide`{{copy}} prints information about all pods in the current namespace, including the target node. <br/> <br/>
-
-`kubectl exec -it <pod-name> <command>`{{copy}} executes a command in an interactive tty attached to the target pod.
-</details>
 
 The default [dashboard](https://app.datadoghq.com/screen/integration/86) should start filling in with metrics from KSM.
 
