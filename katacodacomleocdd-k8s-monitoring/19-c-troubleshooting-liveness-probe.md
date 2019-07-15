@@ -28,9 +28,6 @@ Pods logs are also visible using `kubectl logs`.
 Find a way to fix the issue and implement it, then look at your previously
 created graph to see it fixed there too!
 
-As a reminder, all of the manifests for the applications in this section are in
-`assets/apps/manifests`.
-
 <details>
 <summary>Fix/Explanation</summary>
 The pod is failing liveness checks.<br/><br/> 
