@@ -7,6 +7,9 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: americano
         spec:
           containers:
           - name: americano
@@ -15,5 +18,8 @@ spec:
             - /bin/sh
             - -c
             - "date; echo Hello from the Kubernetes cluster; sleep 70"
+            resources:
+              requests:
+                cpu: "5000m"
+                memory: "32234Mi"
           restartPolicy: OnFailure
-

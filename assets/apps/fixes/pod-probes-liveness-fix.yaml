@@ -1,0 +1,10 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: pod-probes
+          livenessProbe:
+            httpGet:
+              httpHeaders:
+                - name: X-Should-Pass-Liveness
+                  value: true

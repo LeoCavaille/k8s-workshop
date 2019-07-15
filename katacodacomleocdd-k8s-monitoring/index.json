@@ -96,6 +96,18 @@
         "text": "19-b-troubleshooting-crashloopbackoff.md"
       },
       {
+        "title": "Troubleshooting 3: Liveness probe",
+        "text": "19-c-troubleshooting-liveness-probe.md"
+      },
+      {
+        "title": "Troubleshooting 4: Readiness probe",
+        "text": "19-d-troubleshooting-readiness-probe.md"
+      },
+      {
+        "title": "Troubleshooting 5: Scheduling issues",
+        "text": "19-d-troubleshooting-resources.md"
+      },
+      {
         "title": "(Optional) More application failures",
         "text": "x-datadog-more-app-failures.md"
       },
