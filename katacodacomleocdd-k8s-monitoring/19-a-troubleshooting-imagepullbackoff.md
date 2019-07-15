@@ -21,7 +21,7 @@ we installed earlier.
 
 <details>
 <summary>Hints</summary>
-`kubernetes_state.container.status_report.count.waiting` is giving you the count of the containers currently reporting a in waiting state with the `reason` as a tag.
+`kubernetes_state.container.status_report.count.waiting` is giving you the count of the containers currently reporting a in waiting state with the `reason` as a tag, using the `sum by` aggregator will give you the total number of containers matching this state.
 </details>
 
 ## Your mission: fix the problem
@@ -45,5 +45,6 @@ In this case the image is:
 So if you just change the manifest to use something that exists and re-apply the
 manifest you should be on your way!<br/><br/>
 
-We included a sample patch as a solution `cat assets/apps/fixes/espresso-fix.yaml`
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch deployment espresso --patch="$(cat assets/apps/fixes/espresso-fix.yaml)"`
 </details>

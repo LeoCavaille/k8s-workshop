@@ -53,6 +53,9 @@ those pods: here `app=americano`.<br/><br/>
 Then delete them with that filter: `kubectl delete pod
 -lapp=americano`<br/><br/>
 
-Wait for the newest pod coming from the cronjob to be scheduled properly this
-time!
+Wait for the newest pod coming from the cronjob to be scheduled
+properly.<br/><br/>
+
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch cronjob americano-job --patch="$(cat assets/apps/fixes/americano-fix.yaml)"`
 </details>

@@ -47,5 +47,6 @@ The probe definition allows setting a custom HTTP header:<br/>
 
 Use `kubectl edit` to add the `httpHeaders` to your liveness check.<br/><br/>
 
-We included a sample patch as a solution `cat assets/apps/fixes/pod-probes-liveness-fix.yaml`.
+We included a sample patch as a solution:<br/><br/>
+`kubectl patch deployment pod-probes --patch="$(cat assets/apps/fixes/pod-probes-liveness-fix.yaml)"`
 </details>
