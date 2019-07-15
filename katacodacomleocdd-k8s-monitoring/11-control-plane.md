@@ -46,7 +46,7 @@ As an example for how to create custom dashboards in Datadog, we are going to cr
 * Run the following API call using the JSON description of the dashboard located in assets/11-control-plane/control_plane_json.json
 
 
-`export DD_APP_KEY=<YOUR_APP_KEY>`
+`export DD_APP_KEY=<YOUR_APP_KEY>`{{copy}}
 
 `curl -s -o /dev/null -X POST -H "Content-type: application/json" \
 -d @assets/11-control-plane/control_plane_json.json \
