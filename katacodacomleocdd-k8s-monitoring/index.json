@@ -89,7 +89,11 @@
       },
       {
         "title": "Troubleshooting 1: ImagePullBackoff",
-        "text": "19-troubleshooting-imagepullbackoff.md"
+        "text": "19-a-troubleshooting-imagepullbackoff.md"
+      },
+      {
+        "title": "Troubleshooting 2: CrashLoopBackoff",
+        "text": "19-b-troubleshooting-crashloopbackoff.md"
       },
       {
         "title": "(Optional) More application failures",
