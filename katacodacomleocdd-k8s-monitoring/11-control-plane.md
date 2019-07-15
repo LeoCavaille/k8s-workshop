@@ -39,7 +39,7 @@ To verify a check is running, exec into the agent on the host and verify it's co
 
 #TODO activate the kube apiserver metrics dash.
 
-Each control plane integration comes with a default dashboard: [etcd](https://app.datadoghq.com/screen/integration/75/etcd---overview), [kube-apiserver](), [kube-scheduler](https://app.datadoghq.com/screen/integration/30270/kubernetes-scheduler), and [kube-controller-manager](https://app.datadoghq.com/screen/integration/30271/kubernetes-controller-manager).
+Each control plane integration comes with a default dashboard: [etcd](https://app.datadoghq.com/screen/integration/75/etcd), [kube-apiserver](), [kube-scheduler](https://app.datadoghq.com/screen/integration/30270/kubernetes-scheduler), and [kube-controller-manager](https://app.datadoghq.com/screen/integration/30271/kubernetes-controller-manager).
 
 As an example for how to create custom dashboards in Datadaog, we are going to create an overview of the whole control plane using the [Datadog API]()
 
@@ -48,11 +48,10 @@ As an example for how to create custom dashboards in Datadaog, we are going to c
 
 * Run the following API call using the JSON description of the dashboard located in ../assets/11-control-plane/control_plane_json.json
 
-```
-export app_key=<YOUR_APP_KEY>
 
-curl  -X POST -H "Content-type: application/json" \
+`export DD_APP_KEY=<YOUR_APP_KEY>`
+
+`curl -s -o /dev/null -X POST -H "Content-type: application/json" \
 -d @../assets/11-control-plane/control_plane_json.json \
-"https://api.datadoghq.com/api/v1/dashboard?api_key=${DD_API_KEY}&application_key=${app_key}"
-```
+"https://api.datadoghq.com/api/v1/dashboard?api_key=${DD_API_KEY}&application_key=${DD_APP_KEY}"`{{execute}}
 
