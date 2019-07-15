@@ -6,6 +6,8 @@ spec:
           env:
           - name: DD_CLUSTER_AGENT_ENABLED
             value: "true"
+          - name: DD_KUBERNETES_COLLECT_METADATA_TAGS
+            value: "true"
           - name: DD_CLUSTER_AGENT_AUTH_TOKEN
             valueFrom:
               secretKeyRef:

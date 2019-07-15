@@ -15,6 +15,7 @@ Now is time to deploy the Cluster Agent.
 
 <details>
 <summary>Hint</summary>
+
 ```
 kubectl exec -ti datadog-agent-XXX agent status
 [...] 
@@ -28,3 +29,7 @@ Datadog Cluster Agent
 </details>
 
 * You should now be getting metrics with cluster level metadata, which will come handy when troubleshooting traffic to the APIServer or to application services.
+
+For instance, go check out the CoreDNS metrics broken down by `kube_service`:
+![CoreDNS Requests](https://raw.githubusercontent.com/LeoCavaille/k8s-workshop/master/assets/img/coredns.png)
+We are able to identify how DNS requests are load balanced to the replicas from the service perspective.
