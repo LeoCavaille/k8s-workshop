@@ -7,4 +7,4 @@ spec:
             httpGet:
               httpHeaders:
                 - name: X-Should-Pass-Liveness
-                  value: true
+                  value: "true"

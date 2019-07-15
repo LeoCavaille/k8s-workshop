@@ -47,13 +47,13 @@ The application requires a header `X-Should-Pass-Readiness: true` to pass readin
 
 The probe definition allows setting a custom HTTP header:
 ```
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 8080
-            httpHeaders:
-              - name: X-Should-Pass-Readiness
-                value: true
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+    httpHeaders:
+      - name: X-Should-Pass-Readiness
+        value: "true"
 ```
 
 Use `kubectl edit` to add the `httpHeaders` to your liveness check.
@@ -61,7 +61,7 @@ Use `kubectl edit` to add the `httpHeaders` to your liveness check.
 Verify that there are healthy endpoints for your service. <br/> <br/>
 
 We included a sample patch as a solution:<br/><br/>
-`kubectl patch deployment pod-probes --patch="$(cat assets/apps/fixes/pod-probes-readiness-fix.yaml)"`
+`kubectl patch deployment pod-probes --patch="$(cat assets/apps/fixes/pod-probes-readiness-fix.yaml)"`{{copy}}
 </details>
 
-The service should respond to `curl http://<my-service-ip>/whoami` after you fix it.
+The service should respond to `curl http://<my-service-ip>/whoami`{{copy}} after you fix it.

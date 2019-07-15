@@ -36,17 +36,17 @@ The application requires a header `X-Should-Pass-Liveness: true` to pass livenes
 
 The probe definition allows setting a custom HTTP header:<br/>
 ```
-        livenessProbe:
-          httpGet:
-            path: /live
-            port: 8080
-            httpHeaders:
-              - name: X-Should-Pass-Liveness
-                value: true
+livenessProbe:
+  httpGet:
+    path: /live
+    port: 8080
+    httpHeaders:
+      - name: X-Should-Pass-Liveness
+        value: "true"
 ```
 
 Use `kubectl edit` to add the `httpHeaders` to your liveness check.<br/><br/>
 
 We included a sample patch as a solution:<br/><br/>
-`kubectl patch deployment pod-probes --patch="$(cat assets/apps/fixes/pod-probes-liveness-fix.yaml)"`
+`kubectl patch deployment pod-probes --patch="$(cat assets/apps/fixes/pod-probes-liveness-fix.yaml)"`{{copy}}
 </details>
