@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: americano-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: americano
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - "date; echo Hello from the Kubernetes cluster; sleep 70"
+          restartPolicy: OnFailure
+
