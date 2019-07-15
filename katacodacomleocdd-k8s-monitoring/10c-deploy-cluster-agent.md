@@ -1,10 +1,9 @@
 Now is time to deploy the Cluster Agent.
 
-* We are going to patch the Agent to enable the Cluster Agent's client and to configure the token for the communication to be secure.
-
+* We are going to patch the Agent to enable the Cluster Agent's client and to configure the token for the communication to be secure.<br/>
 `kubectl apply -f assets/10c-deploy-cluster-agent/cluster-agent-manifests`{{copy}}
 
-* Patch the agent DaemonSet:
+* Patch the agent DaemonSet: <br/>
 `kubectl patch daemonset datadog-agent --patch "$(cat assets/10c-deploy-cluster-agent/enable-dca.patch.yaml)"`{{copy}}
 
 * Verify that the Cluster Agent is running: <br/>
