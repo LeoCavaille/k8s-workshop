@@ -1,0 +1,13 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: datadog-agent
+          env:
+          - name: DD_CLUSTER_AGENT_ENABLED
+            value: "true"
+          - name: DD_CLUSTER_AGENT_AUTH_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: datadog-auth-token
+                key: token

@@ -48,12 +48,16 @@
         "text": "10b-container-map.md"
       },
       {
+        "title": "Deploying the Cluster Agent",
+        "text": "10c-deploy-cluster-agent.md"
+      },
+      {
         "title": "Part 1 Complete",
-        "text": "10c-end-part-1.md"
+        "text": "10d-end-part-1.md"
       },
       {
         "title": "Part 2",
-        "text": "10d-begin-part-2.md"
+        "text": "10e-begin-part-2.md"
       },
       {
         "title": "Install Datadog integrations for the Kubernetes control plane",
