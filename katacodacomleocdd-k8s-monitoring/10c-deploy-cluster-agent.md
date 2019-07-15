@@ -15,6 +15,7 @@ Now is time to deploy the Cluster Agent.
 
 <details>
 <summary>Hint</summary>
+```
 kubectl exec -ti datadog-agent-XXX agent status
 [...] 
 =====================
@@ -23,6 +24,7 @@ Datadog Cluster Agent
 
   - Datadog Cluster Agent endpoint detected: https://10.106.63.237:5005
   Successfully connected to the Datadog Cluster Agent.
+ ```
 </details>
 
 * You should now be getting metrics with cluster level metadata, which will come handy when troubleshooting traffic to the APIServer or to application services.
