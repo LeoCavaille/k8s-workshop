@@ -108,24 +108,16 @@
         "text": "19-e-troubleshooting-resources.md"
       },
       {
-        "title": "(Optional) More application failures",
-        "text": "x-datadog-more-app-failures.md"
+        "title": "Troubleshooting 6: Identifying a RBAC issue",
+        "text": "19-f-troubleshooting-rbac.md"
       },
       {
-        "title": "Use case: diagnose apiserver spam",
-        "text": "x-apiserver-spam.md"
+        "title": "Troubleshooting 7: Identifying an apiserver spammer",
+        "text": "19-g-troubleshooting-apiserver-spam.md"
       },
       {
-        "title": "Use case: kubectl blame aka. find who did it",
-        "text": "x-audit-action.md"
-      },
-      {
-        "title": "(Optional) Use case: find logs for all actors associated to a deployment",
-        "text": "x-deployment-logs.md"
-      },
-      {
-        "title": "(Optional) Use case: fix the app spamming the apiserver",
-        "text": "x-fix-spammy-app.md"
+        "title": "Troubleshooting 8: Identifying a DNS spammer",
+        "text": "19-h-troubleshooting-apiserver-dns.md"
       }
     ],
     "intro": {
