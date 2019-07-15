@@ -22,3 +22,7 @@ To demonstrate live tail sampling and streaming, let's increase the replica coun
 * Validate your new pods are running.
 
 * Observe traffic in live tail as it's sampled according to volume.
+
+* Before moving to the next step, let's scale back this sample app to zero to
+  get a clean environment again:
+`kubectl scale deployment log-a-lot --replicas 1`{{execute}}

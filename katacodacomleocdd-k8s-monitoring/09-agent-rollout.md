@@ -6,7 +6,7 @@ spec:
 ```
 
 * Patch the agent DaemonSet to add the RollingUpdate strategy:
-`kubectl patch daemonset datadog-agent --patch "$(cat assets/08-datadog-logs/rolling-update.patch.yaml)"`
+`kubectl patch daemonset datadog-agent --patch "$(cat assets/08-datadog-logs/rolling-update.patch.yaml)"`{{execute}}
 
 * Observe the changes to the agent Pods:
 `kubectl get pods -w -lapp=datadog-agent`{{execute}}
