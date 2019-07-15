@@ -1,6 +1,13 @@
 git clone https://github.com/LeoCavaille/k8s-workshop
 ln -s /root/k8s-workshop/assets/ /root/assets
 
+# Deleting permissive rbac policy
+until curl -ksf https://localhost:6443/healthz ;
+do 
+    sleep 5
+done
+kubectl delete clusterrolebinding permissive-binding
+
 # add audit logs to the apiserver
 mkdir -p /etc/kubernetes/audit-policies
 cp assets/00-env-prep/policy.yaml /etc/kubernetes/audit-policies/policy.yaml
