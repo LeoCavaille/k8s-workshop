@@ -62,7 +62,7 @@ Finally create Kubernetes facets in group K8s Audit
 
 5 - Now that audit logs are parsed, look at them again
 Here is a few examples of things you can look at logs Analytics:
-- API calls by User
+- API calls by User: [here](https://app.datadoghq.com/logs/analytics?agg_m=count&agg_q=%40user.username&agg_t=count&cols=core_host%2Ccore_service&event&from_ts=1563220162831&index=main&live=true&panel=%22%22&query=source%3Akubernetes.audit+%40http.method%3Alist&step=auto&stream_sort=desc&to_ts=1563221062831)
 - List calls by User
 - Delete/Create/Update/Patch by Resource type
 - Calls from user: `kubernetes-admin`
