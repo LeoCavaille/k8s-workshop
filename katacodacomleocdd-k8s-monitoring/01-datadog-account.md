@@ -6,6 +6,9 @@ In order to begin using Datadog, you must install the agent. The agent uses an A
 * Create a `Secret` with your API key: <br/>
 `kubectl create secret generic datadog-api-key --from-literal=token=$DD_API_KEY`{{execute}}
 
+* Create another `Secret` for the agents and the cluster agent to communicate securely: <br/>
+`kubectl create secret generic datadog-auth-token --from-literal=token=$(openssl rand -hex 16)`
+
 **Before moving on, make sure your secret is configured as expected.** 
 
 You should have 32 bytes of secret data in the key `token` in an `Opaque` secret.
