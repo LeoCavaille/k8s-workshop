@@ -7,8 +7,7 @@ Now is time to deploy the Cluster Agent.
 * Patch the agent DaemonSet:
 `kubectl patch daemonset datadog-agent --patch "$(cat assets/10c-deploy-cluster-agent/enable-dca.patch.yaml)"`{{copy}}
 
-* Verify that the Cluster Agent is running:
-
+* Verify that the Cluster Agent is running: <br/>
 `kubectl get pod -lapp=datadog-cluster-agent`{{copy}} 
 
 * Verify that the agent can properly communicate with it. Exec into an agent and use the `agent status` command.
