@@ -45,7 +45,15 @@
       },
       {
         "title": "View logs in live tail",
-        "text": "10-live-tail.md"
+        "text": "10a-live-tail.md"
+      },
+      {
+        "title": "Part 1 Complete",
+        "text": "10b-end-part-1.md"
+      },
+      {
+        "title": "Part 2",
+        "text": "10c-begin-part-2.md"
       },
       {
         "title": "Install Datadog integrations for the Kubernetes control plane",
