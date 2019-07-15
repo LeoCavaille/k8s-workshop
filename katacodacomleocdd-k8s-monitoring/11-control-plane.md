@@ -43,7 +43,7 @@ As an example for how to create custom dashboards in Datadog, we are going to cr
 * Create an APP key in your [Datadog account](https://app.datadoghq.com/account/settings#api).
 ![APP Key](https://raw.githubusercontent.com/LeoCavaille/k8s-workshop/master/assets/img/dashboard.png)
 
-* Run the following API call using the JSON description of the dashboard located in ../assets/11-control-plane/control_plane_json.json
+* Run the following API call using the JSON description of the dashboard located in assets/11-control-plane/control_plane_json.json
 
 
 `export DD_APP_KEY=<YOUR_APP_KEY>`
