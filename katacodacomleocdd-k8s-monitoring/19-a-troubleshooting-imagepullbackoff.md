@@ -46,5 +46,5 @@ So if you just change the manifest to use something that exists and re-apply the
 manifest you should be on your way!<br/><br/>
 
 We included a sample patch as a solution:<br/><br/>
-`kubectl patch deployment espresso --patch="$(cat assets/apps/fixes/espresso-fix.yaml)"`
+`kubectl patch deployment espresso --patch="$(cat assets/apps/fixes/espresso-fix.yaml)"`{{copy}}
 </details>

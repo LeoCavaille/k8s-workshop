@@ -57,5 +57,5 @@ non-zero exit code and re-apply the manifest you should be on your
 way!<br/><br/>
 
 We included a sample patch as a solution:<br/><br/>
-`kubectl patch deployment macchiato --patch="$(cat assets/apps/fixes/macchiato-fix.yaml)"`
+`kubectl patch deployment macchiato --patch="$(cat assets/apps/fixes/macchiato-fix.yaml)"`{{copy}}
 </details>

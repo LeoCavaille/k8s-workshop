@@ -37,5 +37,5 @@ try to patch that in your `pod-lister` deployment and watch for the difference
 in throughput to the apiserver.<br/><br/>
 
 We included a sample patch as a solution:<br/><br/>
-`kubectl patch deployment pod-lister --patch="$(cat assets/apps/fixes/pod-lister-fix.yaml)"`
+`kubectl patch deployment pod-lister --patch="$(cat assets/apps/fixes/pod-lister-fix.yaml)"`{{copy}}
 </details>

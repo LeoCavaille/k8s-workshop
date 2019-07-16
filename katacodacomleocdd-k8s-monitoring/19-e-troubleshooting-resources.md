@@ -57,5 +57,5 @@ Wait for the newest pod coming from the cronjob to be scheduled
 properly.<br/><br/>
 
 We included a sample patch as a solution:<br/><br/>
-`kubectl patch cronjob americano-job --patch="$(cat assets/apps/fixes/americano-fix.yaml)"`
+`kubectl patch cronjob americano-job --patch="$(cat assets/apps/fixes/americano-fix.yaml)"`{{copy}}
 </details>
