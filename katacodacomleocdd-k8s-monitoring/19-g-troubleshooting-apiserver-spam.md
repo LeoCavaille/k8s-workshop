@@ -6,7 +6,7 @@ thinks a new application deployed recently is responsible for that.
 ## Your mission: use Datadog to find the issue
 
 We are looking to graph the top requester, or whatever seems to
-be spamming and overloading the apiserver.
+be spamming and overloading the apiserver on the `pods` endpoint.
 
 <details>
 <summary>Hints</summary>
