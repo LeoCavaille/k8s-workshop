@@ -9,6 +9,8 @@ Instrument `kube-proxy` using the Datadog integration.
 
 * Verify the `kube_proxy` check is being run by the Datadog agent.
 
+* Verify that your now have kube-proxy metrics
+
 <details>
 <summary>Hint</summary>
 Agent checks are performed by the agent running on the same node as the target. <br/> <br/>
