@@ -7,6 +7,8 @@ These configurations lead to amplification of the number of DNS queries and may 
 
 In this section, you'll instrument CoreDNS to find the most abusive DNS clients.
 
+CoreDNS is running in your cluster already, in the `kube-system` namespace. The deployment is named `coredns`. CoreDNS is configured with a file named `Corefile`, mounted from a ConfigMap named `coredns`.
+
 ## Metrics
 
 The CoreDNS integration is installed by default using autodiscovery based on the image name.
