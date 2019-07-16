@@ -1,0 +1,13 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: datadog-cluster-agent
+          env:
+          - name: DD_EXTERNAL_METRICS_PROVIDER_ENABLED
+            value: 'true'
+          - name: DD_APP_KEY
+            valueFrom:
+              secretKeyRef:
+                name: datadog-app-key
+                key: token
