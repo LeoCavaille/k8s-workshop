@@ -7,6 +7,11 @@
 
 The `sample-pod-probes` pod is in `Running` state, but the `Service` has no backends. 
 
+You can find the source code of this app:
+
+* locally in your environment, under the `assets/apps/sample-pod-probes`
+* clone in GitHub here: https://github.com/LeoCavaille/k8s-workshop/tree/master/assets/apps
+
 ## Your mission: use your terminal to spot the issue
 
 <details>
