@@ -134,6 +134,10 @@
       {
         "title": "DNS",
         "text": "21-dns.md"
+      },
+      {
+        "title": "Tracing",
+        "text": "22-tracing-pod-lister.md"
       }
     ],
     "intro": {
